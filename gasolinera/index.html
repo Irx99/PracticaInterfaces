@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Echar gasolina</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../bootstrap/js/jquery-3.2.0.min.js"></script>
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            #comenzar{
+                background: -webkit-radial-gradient(rgba(75,175,75,1),rgba(75,175,75,0.5)); /* For Safari 5.1 to 6.0 */
+                background: -o-radial-gradient(rgba(75,175,75,1),rgba(75,175,75,0.5)); /* For Opera 11.6 to 12.0 */
+                background: -moz-radial-gradient(rgba(75,175,75,1),rgba(75,175,75,0.5)); /* For Fx 3.6 to 15 */
+                background: radial-gradient(rgba(75,175,75,1),rgba(75,175,75,0.5)); /* Standard syntax (must be last) */
+            }
+        </style>
+        <script src="../bootstrap/js/bootstrap.js"></script>
+        <script>
+            //DESPUES DE CADA FUNCIÓN RESETEAR EL INICIO <--- SI FALLA PUEDE SER POR ESTO
+            var volver; var espera = true;
+            var letraEspera = true;
+            $(document).ready(function(){
+                var intervalo = setInterval(cambiarLetraEspera, 500);
+                $("#contenido").load("manguera.html", function(){
+                    $(".ajustable").each(function(){
+                    ajustar($(this));
+                    });
+                    $("#contenido").children(".ajustAlt").each(function(){
+                       ajustarAltura($(this));
+
+                    });
+                    $("#contenido").children(".ajustMargen").each(function(){
+                       ajustarMargen($(this));
+                    });
+                });
+               
+                
+                $("#comenzar").click(function (){
+                    $("#comenzar").fadeOut(1);
+                    inicioTimeOut();
+
+                });
+            });
+            $(window).resize(function(){
+                $(".ajustable").each(function(){
+                    ajustar($(this));
+                });
+                $("#contenido").children(".ajustAlt").each(function(){
+                   ajustarAltura($(this));
+
+                });
+                $("#contenido").children(".ajustMargen").each(function(){
+                   ajustarMargen($(this));
+                });                
+                                   
+            });
+           
+            function ajustar(elemento){
+                var altura = elemento.attr("data-altura");
+                var maxAlt = $(window).height();
+                var altura = maxAlt*altura/100;
+                console.log(elemento.attr("id")+"\nMax Alt:"+maxAlt+"\nAltura:"+altura+"\n");
+                elemento.height(altura);
+            }
+            function ajustarMargen(elemento){
+                var margen = elemento.attr("data-margen");
+                var maxAlt = elemento.parent().height();
+                var margen = maxAlt*margen/100;
+                console.log(elemento.html()+"\nMax Alt:"+maxAlt+"\nMargen:"+margen+"\n");
+                elemento.css({
+                    marginTop: margen
+                });
+            }
+            function ajustarAltura(elemento){
+                var altura = elemento.attr("data-altura");
+                var maxAlt = elemento.parent().height();
+                var altura = maxAlt*altura/100;
+                console.log(elemento.html()+"\nMax Alt:"+maxAlt+"\nAltura:"+altura+"\n");
+                elemento.height(altura);
+            }
+            function actualizarTimeOut(){
+                window.clearTimeout(volver);
+                volver = setTimeout(inicio, 3000);
+            }
+            
+            function pararTimeout(){
+                window.clearTimeout(volver);
+            }
+            function inicioTimeOut(){
+                volver = setTimeout(inicio, 3000);
+            }
+            function inicio(){
+                $("#comenzar").fadeIn(1);
+            }
+            function cambiarLetraEspera(){
+                if(letraEspera){
+                    $("#letraEspera").css({
+                        color: "grey" 
+                    });
+                    letraEspera = !letraEspera;
+                }else{
+                    $("#letraEspera").css({
+                        color: "white"
+                    });
+                    letraEspera = !letraEspera;
+                }
+            }
+            
+        </script>
+    </head>
+    <body style="overflow: hidden">
+        <div id="comenzar" style=" position:fixed;z-index: 3" data-altura="100" class="ajustable col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center; padding-top: 20%"><h1 id="letraEspera" style="color: white">Pulse para comenzar</h1></div>
+        </div>
+        <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse"></div>
+        <div id="contenido" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="80" style="background-color: white; padding: 0px">
+        </div>
+        <div id="b_inferior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse"></div>
+    </body>
+</html>
