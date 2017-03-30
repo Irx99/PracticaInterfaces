@@ -26,22 +26,12 @@ and open the template in the editor.
             var letraEspera = true;
             var atras = "index.html";
             var siguiente = "index.html";
+            var variables = new Object();
             $(document).ready(function(){
                 var intervalo = setInterval(cambiarLetraEspera, 500);
                 $("#contenido").load("manguera.html", function(){
-                    $(".ajustable").each(function(){
-                    ajustar($(this));
-                    });
-                    $("#contenido").children(".ajustAlt").each(function(){
-                       ajustarAltura($(this));
-
-                    });
-                    $("#contenido").children(".ajustMargen").each(function(){
-                       ajustarMargen($(this));
-                    });
+                    ajustarTodo();
                     ejecutar();
-                    ajustarAltura($("#atras"));
-                    ajustarAltura($("#siguiente"));
                 });
                
                 
@@ -52,17 +42,7 @@ and open the template in the editor.
                 });
             });
             $(window).resize(function(){
-                $(".ajustable").each(function(){
-                    ajustar($(this));
-                });
-                $("#contenido").children(".ajustAlt").each(function(){
-                   ajustarAltura($(this));
-
-                });
-                $("#contenido").children(".ajustMargen").each(function(){
-                   ajustarMargen($(this));
-                });                
-                                   
+                ajustarTodo();                            
             });
            
             function ajustar(elemento){
@@ -115,6 +95,19 @@ and open the template in the editor.
                     });
                     letraEspera = !letraEspera;
                 }
+            }
+            function ajustarTodo(){
+                $(".ajustable").each(function(){
+                    ajustar($(this));
+                });
+                 $("#contenido").children(".ajustAlt").each(function(){
+                       ajustarAltura($(this));
+                });
+                $("#contenido").children(".ajustMargen").each(function(){
+                    ajustarMargen($(this));
+                });
+                ajustarAltura($("#atras"));
+                ajustarAltura($("#siguiente"));
             }
             
         </script>
