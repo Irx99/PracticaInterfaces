@@ -24,21 +24,15 @@ and open the template in the editor.
             //DESPUES DE CADA FUNCIÓN RESETEAR EL INICIO <--- SI FALLA PUEDE SER POR ESTO
             var volver; var espera = true;
             var letraEspera = true;
+            var atras = "index.html";
+            var siguiente = "index.html";
+            var variables = new Object();
             $(document).ready(function(){
                 var intervalo = setInterval(cambiarLetraEspera, 500);
-                $("#contenido").load("cantidad.html", function(){
-                    $(".ajustable").each(function(){
-                    ajustar($(this));
-                    });
-                    $("#contenido").children(".ajustAlt").each(function(){
-                       ajustarAltura($(this));
-
-                    });
-                    $("#contenido").children(".ajustMargen").each(function(){
-                       ajustarMargen($(this));
-                    });
-                });
-               
+                $("#contenido").load("manguera.html", function(){
+                    ajustarTodo();
+                    ejecutar();
+                });    
                 
                 $("#comenzar").click(function (){
                     $("#comenzar").fadeOut(1);
@@ -47,17 +41,7 @@ and open the template in the editor.
                 });
             });
             $(window).resize(function(){
-                $(".ajustable").each(function(){
-                    ajustar($(this));
-                });
-                $("#contenido").children(".ajustAlt").each(function(){
-                   ajustarAltura($(this));
-
-                });
-                $("#contenido").children(".ajustMargen").each(function(){
-                   ajustarMargen($(this));
-                });                
-                                   
+                ajustarTodo();                            
             });
            
             function ajustar(elemento){
@@ -96,6 +80,7 @@ and open the template in the editor.
             }
             function inicio(){
                 $("#comenzar").fadeIn(1);
+//                $("#contenido").load("manguera.html", ejecutar());
             }
             function cambiarLetraEspera(){
                 if(letraEspera){
@@ -110,6 +95,19 @@ and open the template in the editor.
                     letraEspera = !letraEspera;
                 }
             }
+            function ajustarTodo(){
+                $(".ajustable").each(function(){
+                    ajustar($(this));
+                });
+                 $("#contenido").children(".ajustAlt").each(function(){
+                       ajustarAltura($(this));
+                });
+                $("#contenido").children(".ajustMargen").each(function(){
+                    ajustarMargen($(this));
+                });
+                ajustarAltura($("#atras"));
+                ajustarAltura($("#siguiente"));
+            }
             
         </script>
     </head>
@@ -118,8 +116,15 @@ and open the template in the editor.
             <div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center; padding-top: 20%"><h1 id="letraEspera" style="color: white">Pulse para comenzar</h1></div>
         </div>
         <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse"></div>
-        <div id="contenido" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="80" style="background-color: white; padding: 0px">
+        <div id="contenido" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="77.5" style="background-color: white; padding: 0px">
         </div>
-        <div id="b_inferior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse"></div>
+        <div id="b_inferior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="12.5" style="background-color: chartreuse; padding: 0px">
+            <div id="atras" class="col-md-1 col-sm-1 col-xs-1" data-altura="100" style="background-color:red">
+                atras
+            </div>
+            <div id="siguiente" class="col-md-1 col-sm-1 col-xs-1 col-md-offset-11 col-sm-offset-11 col-xs-offset-11" data-altura="100" style="background-color:blue; position:absolute; z-index: 2">
+                siguiente
+            </div>
+        </div>
     </body>
 </html>

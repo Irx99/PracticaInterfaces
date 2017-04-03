@@ -11,7 +11,16 @@
     manguera4
 </div>
 <script>
+    atras = "index.html";
+    siguiente = "cantidad.html";
+    variables.manguera = 1; 
     function ejecutar(){
-        alert("holi");
+        $("#atras").hide();
+        $("#siguiente").show();
     }
+    $(document).ready(function(){
+        $("#siguiente").click(function(){
+            alert(variables.manguera);
+        });        
+    });
 </script>
