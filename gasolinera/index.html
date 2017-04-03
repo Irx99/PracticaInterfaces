@@ -33,10 +33,9 @@ and open the template in the editor.
                     ajustarTodo();
                     ejecutar();
                 });
-               
-                
+
                 $("#comenzar").click(function (){
-                    $("#comenzar").fadeOut(1);
+                    $("#comenzar").fadeOut(1000);
                     inicioTimeOut();
 
                 });
@@ -114,10 +113,15 @@ and open the template in the editor.
     </head>
     <body style="overflow: hidden">
         <div id="comenzar" style=" position:fixed;z-index: 3" data-altura="100" class="ajustable col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center; padding-top: 20%"><h1 id="letraEspera" style="color: white">Pulse para comenzar</h1></div>
+            <div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center; padding-top: 20%">
+                <h1 id="letraEspera" style="color: white">Pulse para comenzar</h1>
+            </div>
         </div>
-        <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse"></div>
+        <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse">
+            
+        </div>
         <div id="contenido" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="77.5" style="background-color: white; padding: 0px">
+            
         </div>
         <div id="b_inferior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="12.5" style="background-color: chartreuse; padding: 0px">
             <div id="atras" class="col-md-1 col-sm-1 col-xs-1" data-altura="100" style="background-color:red">
