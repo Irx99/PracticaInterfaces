@@ -69,14 +69,14 @@ and open the template in the editor.
             }
             function actualizarTimeOut(){
                 window.clearTimeout(volver);
-                volver = setTimeout(inicio, 3000);
+                inicioTimeOut();
             }
             
             function pararTimeout(){
                 window.clearTimeout(volver);
             }
             function inicioTimeOut(){
-                volver = setTimeout(inicio, 3000);
+                volver = setTimeout(inicio, 300000);
             }
             function inicio(){
                 $("#comenzar").fadeIn(1);
