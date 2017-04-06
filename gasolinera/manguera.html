@@ -1,26 +1,33 @@
-<div class="col-md-offset-2 col-md-2 col-xs-2 col-sm-2 col-sm-offset-2 col-xs-offset-2 ajustAlt ajustMargen" data-altura="80" data-margen="10" style="background-color: red;">
+<div class="manguera col-md-offset-2 col-md-2 col-xs-2 col-sm-2 col-sm-offset-2 col-xs-offset-2 ajustAlt ajustMargen" data-gasolina="gasolina1" data-altura="80" data-margen="10">
     manguera1
 </div>
-<div class="col-md-2 ajustAlt ajustMargen col-sm-2 col-xs-2" data-gasolina="gasolina1" data-altura="80" data-margen="10" style="background-color: green;">
+<div class="manguera col-md-2 ajustAlt ajustMargen col-sm-2 col-xs-2" data-gasolina="gasolina2" data-altura="80" data-margen="10">
     manguera2
 </div>
-<div class="col-md-2 ajustAlt ajustMargen col-sm-2 col-xs-2" data-altura="80" data-margen="10" style="background-color: blue;">
+<div class="manguera col-md-2 ajustAlt ajustMargen col-sm-2 col-xs-2" data-gasolina="gasolina3" data-altura="80" data-margen="10" >
     manguera3
 </div>
-<div class="col-md-2 ajustAlt ajustMargen col-sm-2 col-xs-2" data-altura="80" data-margen="10" style="background-color: purple;">
+<div class="manguera col-md-2 ajustAlt ajustMargen col-sm-2 col-xs-2" data-gasolina="gasolina4" data-altura="80" data-margen="10" >
     manguera4
 </div>
 <script>
     atras = "index.html";
     siguiente = "cantidad.html";
-    variables.manguera = 1; 
     function ejecutar(){
         $("#atras").hide();
         $("#siguiente").show();
     }
     $(document).ready(function(){
-        $("#siguiente").click(function(){
-            alert(variables.manguera);
-        });        
+        $("#contenido").children(".manguera").click(function(){
+            $("#contenido").children(".manguera").each(function(){
+                $(this).css({
+                   backgroundColor:"white" 
+                });
+            });
+            $(this).css({
+                backgroundColor: "#e2e2e2"
+            });
+            variables.gasolina= $(this).attr("data-gasolina");
+        });
     });
 </script>
