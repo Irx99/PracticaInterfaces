@@ -21,7 +21,7 @@
 	<!-- Unidades -->
 	<div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px">
 		<button id="masDineroUnidades" type="button" valor="100" unidad="dinero" class="boton btn-block btn-info">+</button>
-		<span id="dineroUnidades" class="casillaNumero">0</span>
+		<span id="dineroUnidades" class="casillaNumero">0</span><span style="float:right">.</span>
 		<button id="menosDineroUnidades" type="button" valor="-100" unidad="dinero" class="boton btn-block btn-info">-</button>
 	</div>
 	<!-- Decimas -->
@@ -55,7 +55,7 @@
 	<!-- Unidades -->
 	<div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px">
 		<button id="masLitrosUnidades" type="button" valor="100" unidad="litros" class="boton btn-block btn-info">+</button>
-		<span id="litrosUnidades" class="casillaNumero">0</span>
+		<span id="litrosUnidades" class="casillaNumero">0</span><span style="float:right">.</span>
 		<button id="menosLitrosUnidades" type="button" valor="-100" unidad="litros" class="boton btn-block btn-info">-</button>
 	</div>
 	<!-- Decimas -->
@@ -165,5 +165,8 @@ function redimension(){
 	$(".div2").css({padding: (divHeight/20)*3+"px"});
 	$(".div2").css({fontSize: sizeTipo});
 	$(".casilla").css({lineHeight: "166.6666%"});
+	
+	//Puntos
+	//$("#punto1").({line-height: "166.6666%"});
 }
 </script>
