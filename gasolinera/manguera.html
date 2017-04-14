@@ -1,3 +1,4 @@
+<span id="cargado"></span>
 <div class="manguera col-md-offset-2 col-md-2 col-xs-2 col-sm-2 col-sm-offset-2 col-xs-offset-2 ajustAlt ajustMargen" data-gasolina="gasolina1" data-altura="80" data-margen="10">
     manguera1
 </div>
@@ -15,9 +16,13 @@
     siguiente = "cantidad.html";
     function ejecutar(){
         $("#atras").hide();
-        $("#siguiente").show();
+       $("#siguiente").show();
     }
     $(document).ready(function(){
+//        $("#cargado").ready(function(){
+//            $("#atras").hide();
+//            $("#siguiente").show();
+//        });
         $("#contenido").children(".manguera").click(function(){
             $("#contenido").children(".manguera").each(function(){
                 $(this).css({
