@@ -8,104 +8,123 @@
 <div class="div2 col-xs-offset-1 col-xs-10 ajustAlt ajustMargen text-center parraf1" data-altura="30" data-margen="5" style="font-size:20px; border: 1px solid blue">
 	<!-- Centenas -->
 	<div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px">
-		<button id="masDineroCentenas" type="button" valor="10000" unidad="dinero" class="boton btn-block btn-info invisible">+</button>
+		<button id="masDineroCentenas" type="button" data-valor="10000" data-unidad="dinero" class="boton btn-block btn-info invisible">+</button>
 		<span id="dineroCentenas" class="casillaNumero">0</span>
-		<button id="menosDineroCentenas" type="button" valor="-10000" unidad="dinero" class="boton btn-block btn-info invisible">-</button>
+		<button id="menosDineroCentenas" type="button" data-valor="-10000" data-unidad="dinero" class="boton btn-block btn-info invisible">-</button>
 	</div>
 	<!-- Decenas -->
 	<div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px">
-		<button id="masDineroDecenas" type="button" valor="1000" unidad="dinero" class="boton btn-block btn-info">+</button>
+		<button id="masDineroDecenas" type="button" data-valor="1000" data-unidad="dinero" class="boton btn-block btn-info">+</button>
 		<span id="dineroDecenas" class="casillaNumero">0</span>
-		<button id="menosDineroDecenas" type="button" valor="-1000" unidad="dinero" class="boton btn-block btn-info">-</button>
+		<button id="menosDineroDecenas" type="button" data-valor="-1000" data-unidad="dinero" class="boton btn-block btn-info">-</button>
 	</div>
 	<!-- Unidades -->
 	<div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px">
-		<button id="masDineroUnidades" type="button" valor="100" unidad="dinero" class="boton btn-block btn-info">+</button>
+		<button id="masDineroUnidades" type="button" data-valor="100" data-unidad="dinero" class="boton btn-block btn-info">+</button>
 		<span id="dineroUnidades" class="casillaNumero">0</span><span style="float:right">.</span>
-		<button id="menosDineroUnidades" type="button" valor="-100" unidad="dinero" class="boton btn-block btn-info">-</button>
+		<button id="menosDineroUnidades" type="button" data-valor="-100" data-unidad="dinero" class="boton btn-block btn-info">-</button>
 	</div>
 	<!-- Decimas -->
 	<div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px">
-		<button id="masDineroDecimas" type="button" valor="10" unidad="dinero" class="boton btn-block btn-info">+</button>
+		<button id="masDineroDecimas" type="button" data-valor="10" data-unidad="dinero" class="boton btn-block btn-info">+</button>
 		<span id="dineroDecimas" class="casillaNumero">0</span>
-		<button id="menosDineroDecimas" type="button" valor="-10" unidad="dinero" class="boton btn-block btn-info">-</button>
+		<button id="menosDineroDecimas" type="button" data-valor="-10" data-unidad="dinero" class="boton btn-block btn-info">-</button>
 	</div>
 	<!-- Centesimas -->
 	<div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px">
-		<button id="masDineroCentesimas" type="button" valor="1" unidad="dinero" class="boton btn-block btn-info">+</button>
+		<button id="masDineroCentesimas" type="button" data-valor="1" data-unidad="dinero" class="boton btn-block btn-info">+</button>
 		<span id="dineroCentesimas" class="casillaNumero">0</span>
-		<button id="menosDineroCentesimas" type="button" valor="-1" unidad="dinero" class="boton btn-block btn-info">-</button>
+		<button id="menosDineroCentesimas" type="button" data-valor="-1" data-unidad="dinero" class="boton btn-block btn-info">-</button>
 	</div>
-	<div class="finCasilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black;margin: 0px; height: 100%">€</div>
+        <div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px; height: 100%">
+		<button  type="button" data-valor="1" data-unidad="litros" class="boton btn-block btn-info invisible">+</button>
+		<span  class="casillaNumero">€</span>
+		<button  type="button" data-valor="-1" data-unidad="litros" class="boton btn-block btn-info invisible">-</button>
+	</div>
 </div>
 <!-- Litros -->
 <div class="div2 col-xs-offset-1 col-xs-10 ajustAlt ajustMargen text-center parraf1" data-altura="30" data-margen="5" style="font-size:20px; border: 1px solid blue">
 	<!-- Centenas -->
 	<div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px">
-		<button id="masLitrosCentenas" type="button" valor="10000" unidad="litros" class="boton btn-block btn-info invisible">+</button>
+		<button id="masLitrosCentenas" type="button" data-valor="10000" data-unidad="litros" class="boton btn-block btn-info invisible">+</button>
 		<span id="litrosCentenas" class="casillaNumero">0</span> 
-		<button id="menoslitrosCentenas" type="button" valor="-10000" unidad="litros" class="boton btn-block btn-info invisible">-</button>
+		<button id="menoslitrosCentenas" type="button" data-valor="-10000" data-unidad="litros" class="boton btn-block btn-info invisible">-</button>
 	</div>
 	<!-- Decenas -->
 	<div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px">
-		<button id="masLitrosDecenas" type="button" valor="1000" unidad="litros" class="boton btn-block btn-info">+</button>
+		<button id="masLitrosDecenas" type="button" data-valor="1000" data-unidad="litros" class="boton btn-block btn-info">+</button>
 		<span id="litrosDecenas" class="casillaNumero">0</span>
-		<button id="menosLitrosDecenas" type="button" valor="-1000" unidad="litros" class="boton btn-block btn-info">-</button>
+		<button id="menosLitrosDecenas" type="button" data-valor="-1000" data-unidad="litros" class="boton btn-block btn-info">-</button>
 	</div>
 	<!-- Unidades -->
 	<div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px">
-		<button id="masLitrosUnidades" type="button" valor="100" unidad="litros" class="boton btn-block btn-info">+</button>
+		<button id="masLitrosUnidades" type="button" data-valor="100" data-unidad="litros" class="boton btn-block btn-info">+</button>
 		<span id="litrosUnidades" class="casillaNumero">0</span><span style="float:right">.</span>
-		<button id="menosLitrosUnidades" type="button" valor="-100" unidad="litros" class="boton btn-block btn-info">-</button>
+		<button id="menosLitrosUnidades" type="button" data-valor="-100" data-unidad="litros" class="boton btn-block btn-info">-</button>
 	</div>
 	<!-- Decimas -->
 	<div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px">
-		<button id="masLitrosDecimas" type="button" valor="10" unidad="litros" class="boton btn-block btn-info">+</button>
+		<button id="masLitrosDecimas" type="button" data-valor="10" data-unidad="litros" class="boton btn-block btn-info">+</button>
 		<span id="litrosDecimas" class="casillaNumero">0</span>
-		<button id="menosLitrosDecimas" type="button" valor="-10" unidad="litros" class="boton btn-block btn-info">-</button>
+		<button id="menosLitrosDecimas" type="button" data-valor="-10" data-unidad="litros" class="boton btn-block btn-info">-</button>
 	</div>
 	<!-- Centesimas -->
 	<div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px; height: 100%">
-		<button id="masLitrosCentesimas" type="button" valor="1" unidad="litros" class="boton btn-block btn-info">+</button>
+		<button id="masLitrosCentesimas" type="button" data-valor="1" data-unidad="litros" class="boton btn-block btn-info">+</button>
 		<span id="litrosCentesimas" class="casillaNumero">0</span>
-		<button id="menosLitrosCentesimas" type="button" valor="-1" unidad="litros" class="boton btn-block btn-info">-</button>
+		<button id="menosLitrosCentesimas" type="button" data-valor="-1" data-unidad="litros" class="boton btn-block btn-info">-</button>
 	</div>
-	<div class="finCasilla col-xs-2" style="border: 0px solid black; height: 100%">litros</div>
+        <div class="casilla col-xs-2 ajustAlt" data-altura="40" style="border: 0px solid black; margin: 0px; height: 100%">
+		<button  type="button" data-valor="1" data-unidad="litros" class="boton btn-block btn-info invisible">+</button>
+		<span  class="casillaNumero">litros</span>
+		<button  type="button" data-valor="-1" data-unidad="litros" class="boton btn-block btn-info invisible">-</button>
+	</div>
+	<!--<div class="finCasilla col-xs-2" style="border: 1px solid black; height: 100%">litros</div>-->
 </div>
 <script>
 var conversion;
 
 var dinero = 0;
 var litros = 0;
-
+siguiente="confirmacion.html";
+atras = "manguera.html";
 function ejecutar(){
 	// euros por litro
 	conversion = 1.05;
-
+        $("#gasolina").html(variables.gasolina);
 	redimension();
 }
 
-// botones
-$(".boton").click(function(){
-	if($(this).attr("unidad") == "dinero"){
-		var valor = dinero;
-		valor = parseInt(dinero) + parseInt($(this).attr("valor"));
-	}else{
-		var valor = litros;
-		valor = parseInt(litros) + parseInt($(this).attr("valor"));
-	}
-	if(valor < 10000 && valor >= 0){
-		if($(this).attr("unidad") == "dinero"){
-			dinero = valor;
-			conversionDineroLitros();
-		}else{
-			litros = valor;
-			conversionLitrosDinero();
-		}		
-		actualizarValores();
-	}
-	console.log(dinero+" - "+litros);
+$(document).ready(function(){
+    // botones
+    $(".boton").click(function(){
+            var bool = false;
+            if($(this).attr("data-unidad") == "dinero"){
+                    var valor = dinero;
+                    valor = parseInt(dinero) + parseInt($(this).attr("data-valor"));
+                    bool = valor<dinero;
+            }else{
+                    var valor = litros;
+                    valor = parseInt(litros) + parseInt($(this).attr("data-valor"));
+                    bool = valor<litros;
+            }
+            if((valor < 10000 || bool) && valor >= 0){
+                    if($(this).attr("data-unidad") == "dinero"){
+                            dinero = valor;
+                            conversionDineroLitros();
+                    }else{
+                            litros = valor;
+                            conversionLitrosDinero();
+                    }		
+                    actualizarValores();
+            }
+            variables.dinero=dinero;
+            variables.litros=litros;
+    });
+    // redimension
+    
 });
+$(window).resize(redimension);
 
 function conversionDineroLitros(){
 	litros = dinero*1.0 / conversion;
@@ -132,8 +151,7 @@ function actualizarValores(){
 	$("#litrosCentesimas").text  ( parseInt ( (litros / 1) % 10    )); 
 }
 
-// redimension
-$(window).resize(redimension);
+
 
 function redimension(){
 	// Texto
@@ -149,23 +167,33 @@ function redimension(){
 		var sizeTipo = sizeAlto;
 	}
 
-	$(".div1").css({padding: (divHeight/20)*3+"px"});
+        $(".div1").children().each(function(){
+            $(this).css({
+                marginTop: (divHeight/20)*3+"px"
+            });
+        });
 	$(".parraf1").css({fontSize: sizeTipo});
 	$(".parraf1").css({lineHeight: "120%"});
-	
-	// Caja final ("€" y "litros")
-	var sizeBox = $(".finCasilla").height();
-	var sizeText = $(".finCasilla").css("font-size").substring(0,$(".parraf1").css("font-size").length - 2);
-	var paddingFinal = (sizeBox - sizeText) / 2;
-	
-	$(".finCasilla").css({paddingTop : paddingFinal});
-	$(".finCasilla").css({lineHeight: "0%"});
-	
+
 	// Cajas
-	$(".div2").css({padding: (divHeight/20)*3+"px"});
+        $(".div2").children().each(function(){
+            if(!$(this).hasClass("finCasilla")){
+                $(this).css({
+                    marginTop: (divHeight/20)*3+"px"
+                });
+            }
+        });
 	$(".div2").css({fontSize: sizeTipo});
 	$(".casilla").css({lineHeight: "166.6666%"});
-	
+        
+        // Caja final ("€" y "litros")
+//	var sizeBox = $(".finCasilla").innerHeight();
+//	var sizeText = $(".finCasilla").css("font-size").substring(0,$(".parraf1").css("font-size").length - 2);
+//	var paddingFinal = (sizeBox - sizeText) / 2;
+//        $(".finCasilla").css({
+//            marginTop: paddingFinal+"px"
+//        });
+//	$(".finCasilla").css({lineHeight: "0%"});
 	//Puntos
 	//$("#punto1").({line-height: "166.6666%"});
 }

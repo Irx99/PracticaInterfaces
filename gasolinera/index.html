@@ -18,6 +18,11 @@ and open the template in the editor.
                 background: -moz-radial-gradient(rgba(75,175,75,1),rgba(75,175,75,0.5)); /* For Fx 3.6 to 15 */
                 background: radial-gradient(rgba(75,175,75,1),rgba(75,175,75,0.5)); /* Standard syntax (must be last) */
             }
+            #usuario{
+                background-color: rgba(0,0,0,1);
+                padding: 0px;
+                color: white;
+            }
         </style>
         <script src="../bootstrap/js/bootstrap.js"></script>
         <script>
@@ -29,9 +34,10 @@ and open the template in the editor.
             var variables = new Object();
             $(document).ready(function(){
                 var intervalo = setInterval(cambiarLetraEspera, 500);
-                $("#contenido").load("cantidad.html", function(){ // MODIFICACION NO FINAL
+                $("#contenido").load("manguera.html", function(){ 
                     ajustarTodo();
                     ejecutar();
+
                 });
 
                 $("#comenzar").click(function (){
@@ -39,6 +45,18 @@ and open the template in the editor.
                     inicioTimeOut();
 
                 });
+                $("#siguiente").click(function(){
+                    $("#contenido").load(siguiente, function(){ 
+                        ajustarTodo();
+                        ejecutar();
+                    });
+                });
+                $("#atras").click(function(){
+                    $("#contenido").load(atras, function(){ 
+                        ajustarTodo();
+                        ejecutar();
+                    });
+                });                
             });
             $(window).resize(function(){
                 ajustarTodo();                            
@@ -47,15 +65,22 @@ and open the template in the editor.
             function ajustar(elemento){
                 var altura = elemento.attr("data-altura");
                 var maxAlt = $(window).height();
-                var altura = maxAlt*altura/100;
-                console.log(elemento.attr("id")+"\nMax Alt:"+maxAlt+"\nAltura:"+altura+"\n");
+                altura = maxAlt*altura/100;
+//                console.log(elemento.attr("id")+"\nMax Alt:"+maxAlt+"\nAltura:"+altura+"\n");
                 elemento.height(altura);
+                var margen = elemento.attr("data-margen");
+                if(margen!=null){
+                    margen = maxAlt*margen/100;
+                    elemento.css({
+                        marginTop:margen
+                    });
+                }
             }
             function ajustarMargen(elemento){
                 var margen = elemento.attr("data-margen");
                 var maxAlt = elemento.parent().height();
                 var margen = maxAlt*margen/100;
-                console.log(elemento.html()+"\nMax Alt:"+maxAlt+"\nMargen:"+margen+"\n");
+//                console.log(elemento.html()+"\nMax Alt:"+maxAlt+"\nMargen:"+margen+"\n");
                 elemento.css({
                     marginTop: margen
                 });
@@ -64,7 +89,7 @@ and open the template in the editor.
                 var altura = elemento.attr("data-altura");
                 var maxAlt = elemento.parent().height();
                 var altura = maxAlt*altura/100;
-                console.log(elemento.html()+"\nMax Alt:"+maxAlt+"\nAltura:"+altura+"\n");
+//                console.log(elemento.html()+"\nMax Alt:"+maxAlt+"\nAltura:"+altura+"\n");
                 elemento.height(altura);
             }
             function actualizarTimeOut(){
@@ -79,8 +104,7 @@ and open the template in the editor.
                 volver = setTimeout(inicio, 300000);
             }
             function inicio(){
-                $("#comenzar").fadeIn(1);
-//                $("#contenido").load("manguera.html", ejecutar());
+                window.location.href="index.html";
             }
             function cambiarLetraEspera(){
                 if(letraEspera){
@@ -99,10 +123,10 @@ and open the template in the editor.
                 $(".ajustable").each(function(){
                     ajustar($(this));
                 });
-                 $("#contenido").children(".ajustAlt").each(function(){
+                 $("#contenido").find(".ajustAlt").each(function(){
                        ajustarAltura($(this));
                 });
-                $("#contenido").children(".ajustMargen").each(function(){
+                $("#contenido").find(".ajustMargen").each(function(){
                     ajustarMargen($(this));
                 });
                 ajustarAltura($("#atras"));
@@ -111,10 +135,17 @@ and open the template in the editor.
             function ejecutar(){
                 
             }
+            function add(html){
+                $("body").append(html);
+            }
+            function remove(id){
+                $("#"+id).remove();
+            }
             
         </script>
     </head>
     <body style="overflow: hidden">
+<!--    <body>-->
         <div id="comenzar" style=" position:fixed;z-index: 3" data-altura="100" class="ajustable col-md-12 col-sm-12 col-xs-12">
             <div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center; padding-top: 20%">
                 <h1 id="letraEspera" style="color: white">Pulse para comenzar</h1>
@@ -123,6 +154,7 @@ and open the template in the editor.
         <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse">
             
         </div>
+
         <div id="contenido" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="77.5" style="background-color: white; padding: 0px">
             
         </div>
@@ -134,5 +166,8 @@ and open the template in the editor.
                 siguiente
             </div>
         </div>
+<!--        <div id="usuario" style=" position:fixed;z-index: 2" data-altura="100" class="ajustable col-md-12 col-sm-12 col-xs-12">
+            
+        </div>-->
     </body>
 </html>
