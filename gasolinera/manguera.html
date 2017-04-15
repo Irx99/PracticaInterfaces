@@ -1,13 +1,41 @@
-<div class="manguera col-md-offset-2 col-md-2 col-xs-2 col-sm-2 col-sm-offset-2 col-xs-offset-2 ajustAlt ajustMargen" data-gasolina="gasolina1" data-altura="80" data-margen="10">
+<div id="monedasocultas" style="display: none">
+    <div class="col-xs-12 ajustable" data-altura="10" style="z-index:2;position:fixed; padding: 0px; background-color: rgba(0,0,0,1)">
+        <div class="ajustAlt col-xs-11" data-altura="100" style=" padding: 0px" >
+            <img id="1cent" class="col-xs-1 ajustAlt" style="background-color: white" data-altura="100" data-valor="0.01" alt="moneda de 1 centimo" src=""/>
+            <img id="2cent" class="col-xs-1  ajustAlt" style="background-color: white" data-altura="100" data-valor="0.02" alt="moneda de 2 centimos" src=""/>
+            <img id="5cent" class="col-xs-1  ajustAlt" style="background-color: white" data-altura="100" data-valor="0.05" alt="moneda de 5 centimos" src=""/>
+            <img id="10cent" class="col-xs-1  ajustAlt" style="background-color: white" data-altura="100" data-valor="0.10" alt="moneda de 10 centimos" src=""/>
+            <img id="20cent" class="col-xs-1  ajustAlt" style="background-color: white" data-altura="100" data-valor="0.20" alt="moneda de 20 centimos" src=""/>
+            <img id="50cent" class="col-xs-1  ajustAlt" style="background-color: white" data-altura="100" data-valor="0.50" alt="moneda de 50 centimos" src=""/>
+            <img id="1euro" class=" col-xs-1  ajustAlt" style="background-color: white" data-altura="100" data-valor="1.00" alt="moneda de 1 euro" src=""/>
+            <img id="2euros" class="col-xs-1  ajustAlt" style="background-color: white" data-altura="100" data-valor="2.00" alt="moneda de 2 euros" src=""/>
+            <img id="5euros" class="col-xs-1  ajustAlt" style="background-color: white" data-altura="100" data-valor="5.00" alt="billete de 5 euros" src=""/>
+            <img id="10euros" class="col-xs-1  ajustAlt" style="background-color: white" data-altura="100" data-valor="10.00" alt="billete de 10 euros" src=""/>
+            <img id="20euros" class="col-xs-1  ajustAlt" style="background-color: white" data-altura="100" data-valor="20.00" alt="billete de 20 euros" src=""/>
+            <img id="50euros" class="col-xs-1  ajustAlt" style="background-color: white" data-altura="100" data-valor="50.00" alt="billete de 50 euros" src=""/>
+        </div>
+        <div  style="background-color: pink" class="cerrarMonedas col-xs-1 ajustAlt" data-altura="100">
+            X
+        </div>
+    </div>
+    <div class="col-xs-12 ajustable" data-margen="87.5" data-altura="12.5" style="z-index:2;position:fixed; padding: 0px; background-color: rgba(135,148,169,1)">
+        <div class="col-xs-12 ajustMargen" data-margen="30">
+            <label class="col-xs-offset-3 col-xs-2" style="height: 30%; text-align: right"  for="deposito">Espacio libre en el deposito: </label>
+            <input class="col-xs-1" style="height: 30%" name="deposito" min="0" type="number" /><label data-altura="30">&nbsp;litros</label>
+        </div>
+    </div>
+</div>
+<span id="cargado"></span>
+<div class="manguera col-xs-2 col-xs-offset-2 ajustAlt ajustMargen" data-gasolina="gasolina1" data-altura="80" data-margen="10">
     manguera1
 </div>
-<div class="manguera col-md-2 ajustAlt ajustMargen col-sm-2 col-xs-2" data-gasolina="gasolina2" data-altura="80" data-margen="10">
+<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina2" data-altura="80" data-margen="10">
     manguera2
 </div>
-<div class="manguera col-md-2 ajustAlt ajustMargen col-sm-2 col-xs-2" data-gasolina="gasolina3" data-altura="80" data-margen="10" >
+<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina3" data-altura="80" data-margen="10" >
     manguera3
 </div>
-<div class="manguera col-md-2 ajustAlt ajustMargen col-sm-2 col-xs-2" data-gasolina="gasolina4" data-altura="80" data-margen="10" >
+<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina4" data-altura="80" data-margen="10" >
     manguera4
 </div>
 <script>
@@ -15,9 +43,15 @@
     siguiente = "cantidad.html";
     function ejecutar(){
         $("#atras").hide();
-        $("#siguiente").show();
+       $("#siguiente").show();
+       add("<span id='monedas'>"+$("#monedasocultas").html()+"</span>");
+       ajustarTodo();
     }
     $(document).ready(function(){
+//        $("#cargado").ready(function(){
+//            $("#atras").hide();
+//            $("#siguiente").show();
+//        });
         $("#contenido").children(".manguera").click(function(){
             $("#contenido").children(".manguera").each(function(){
                 $(this).css({
@@ -29,5 +63,9 @@
             });
             variables.gasolina= $(this).attr("data-gasolina");
         });
+        $(".cerrarMonedas").mouseup(function(){
+            remove("monedas");
+        });
+
     });
 </script>
