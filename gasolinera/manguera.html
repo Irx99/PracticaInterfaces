@@ -41,12 +41,13 @@
 <script>
     atras = "index.html";
     siguiente = "cantidad.html";
-    function ejecutar(){
+    ejecutar = function(){
         $("#atras").hide();
        $("#siguiente").show();
        add("<span id='monedas'>"+$("#monedasocultas").html()+"</span>");
        ajustarTodo();
-    }
+    };
+	
     $(document).ready(function(){
 //        $("#cargado").ready(function(){
 //            $("#atras").hide();
