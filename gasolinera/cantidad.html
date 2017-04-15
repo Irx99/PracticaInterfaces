@@ -88,12 +88,12 @@ var dinero = 0;
 var litros = 0;
 siguiente="confirmacion.html";
 atras = "manguera.html";
-function ejecutar(){
-	// euros por litro
-	conversion = 1.05;
-        $("#gasolina").html(variables.gasolina);
-	redimension();
-}
+ejecutar = function(){
+		// euros por litro
+		conversion = 1.05;
+		$("#gasolina").html(variables.gasolina);
+		//redimension();
+	};
 
 $(document).ready(function(){
     // botones
@@ -124,7 +124,7 @@ $(document).ready(function(){
     // redimension
     
 });
-$(window).resize(redimension);
+//$(window).resize(redimension);
 
 function conversionDineroLitros(){
 	litros = dinero*1.0 / conversion;
@@ -152,7 +152,7 @@ function actualizarValores(){
 }
 
 
-
+/*
 function redimension(){
 	// Texto
 	var divHeight = $(".div1").innerHeight();
@@ -197,4 +197,5 @@ function redimension(){
 	//Puntos
 	//$("#punto1").({line-height: "166.6666%"});
 }
+*/
 </script>
