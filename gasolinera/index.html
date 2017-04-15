@@ -132,7 +132,7 @@ and open the template in the editor.
                 $("#contenido").find(".ajustMargen").each(function(){
                     ajustarMargen($(this));
                 });
-				$("#contenido").find(".ajustTexto").each(function(){
+		$("#contenido").find(".ajustTexto").each(function(){
                     ajustarTexto($(this));
                 });
                 ajustarAltura($("#atras"));
@@ -154,7 +154,9 @@ and open the template in the editor.
 				var maxAlt = elemento.parent().height();
 				
 				var maxAncho = elemento.parent().width() * (anchura / 100);
-				var fontSizeEle = elemento.css("font-size").substring(0,elemento.css("font-size").length - 2);
+                                console.log(elemento.html()+"-"+elemento.css("font-size"));
+				var fontSizeEle = elemento.css("font-size");
+                                fontSizeEle = fontSizeEle.substring(0,elemento.css("font-size").length - 2);
 				var anchoEle = elemento.width();
 				
 				var fontAlto = (altura * maxAlt) / 100;
