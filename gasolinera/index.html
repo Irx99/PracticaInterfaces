@@ -149,6 +149,9 @@ and open the template in the editor.
 		$("#contenido").find(".textoPreparado").each(function(){
                     ajustarTexto($(this));
                 });
+		$("#contenido").find(".seguirModelo").each(function(){
+                    seguirTexto($(this));
+                });                
                 ajustarAltura($("#atras"));
                 ajustarAltura($("#siguiente"));
             }
@@ -160,33 +163,41 @@ and open the template in the editor.
             }
 			// Ajusta el tamaño del texto en funcion del porcentaje pedido
             function ajustarTexto(elemento){			
-				var altura = elemento.parent().attr("data-altoTexto");
-				var anchura = elemento.parent().attr("data-anchoTexto");
-				var maxAlt = elemento.parent().height();
-				console.log("a");
-				
-				var maxAncho = elemento.parent().width() * (anchura / 100);
-				//alert(elemento.width());
-				var fontSizeEle = elemento.css("font-size").substring(0,elemento.css("font-size").length - 2);
-				var anchoEle = elemento.width();// <- error aqui
-				
-				var fontAlto = (altura * maxAlt) / 100;
-				var fontAncho = (maxAncho * fontSizeEle) / anchoEle;
-				//console.log(maxAlt+" - "+fontAlto+" - "+fontAncho);
-				//console.log(elemento.html()+" -> "+maxAncho+" * "+fontSizeEle+" / "+anchoEle);
-				
-				if(fontAlto < fontAncho){
-					elemento.css({fontSize : fontAlto+"px"});
-				}else{
-					elemento.css({fontSize : fontAncho+"px"});				
-				}	
+                var altura = elemento.parent().attr("data-altoTexto");
+                var anchura = elemento.parent().attr("data-anchoTexto");
+                var maxAlt = elemento.parent().height();
+
+                var maxAncho = elemento.parent().width() * (anchura / 100);
+                //alert(elemento.width());
+                var fontSizeEle = elemento.css("font-size").substring(0,elemento.css("font-size").length - 2);
+                var anchoEle = elemento.width();// <- error aqui
+
+                var fontAlto = (altura * maxAlt) / 100;
+                var fontAncho = (maxAncho * fontSizeEle) / anchoEle;
+                //console.log(maxAlt+" - "+fontAlto+" - "+fontAncho);
+                //console.log(elemento.html()+" -> "+maxAncho+" * "+fontSizeEle+" / "+anchoEle);
+
+                if(fontAlto < fontAncho){
+                        elemento.css({fontSize : fontAlto+"px"});
+                }else{
+                        elemento.css({fontSize : fontAncho+"px"});				
+                }	
 			
-			}
-			function prepararTexto(){
-				$(".ajustTexto").each(function (){
-					$(this).html("<span class='textoPreparado'>"+$(this).html()+"</span>");
-				});
-			}
+            }
+            function seguirTexto(elemento){
+                var modelo = elemento.parent().attr("data-modelo");
+                var fSizeModelo = $("#contenido").find("#"+modelo).children().first().css("font-size");
+                console.log(fSizeModelo);
+                elemento.css({fontSize : fSizeModelo});
+            }
+            function prepararTexto(){
+                    $(".ajustTexto").each(function (){
+                            $(this).html("<span class='textoPreparado'>"+$(this).html()+"</span>");
+                    });
+                    $(".seguirTexto").each(function (){
+                            $(this).html("<span class='seguirModelo textoPreparado'>"+$(this).html()+"</span>");
+                    });
+            }
         </script>
     </head>
     <body style="overflow: hidden">
