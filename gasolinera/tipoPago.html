@@ -30,9 +30,27 @@
 <script>
 	atras = "manguera.html";
 
+	// Para el caso de pago en efetivo en el que se vuelva habiendo hechado dinero
+	if(variables.recogerCambio == null){
+		variables.recogerCambio = false;
+	}	
+	
 	ejecutar = function(){
 		$("#atras").show();
 		$("#siguiente").hide();
+		
+		// Caso de pago en efectivo
+		if(variables.recogerCambio){
+			var htmlPopUp = {
+				lineas : 1,
+				texto : [
+							{contenido: "Por favor, recoja su cambio"}
+						]
+			}
+		
+			
+			popUp(htmlPopUp,null,null,null);
+		}
 	};
 
 	$(document).ready(function(){
