@@ -26,7 +26,7 @@ and open the template in the editor.
 			.textoPreparado{
 				display: inline-block;
 				white-space: nowrap;
-				border: 1px solid blue;
+				border: 0px solid blue;
 				line-height: 100%;
 			}
 			body{
@@ -35,6 +35,17 @@ and open the template in the editor.
 			div{
 				margin: 0px;
 				padding: 0px;
+			}
+			.btn-block{
+				padding: 10% 0;
+				max-width: 100%;
+				max-height: 100%
+			}
+			img{
+				max-width: 100%;
+				max-height: 100%;
+				min-width: 100%;
+				min-height: 100%;
 			}
         </style>
         <script src="../bootstrap/js/bootstrap.js"></script>
@@ -170,25 +181,35 @@ and open the template in the editor.
                 var maxAncho = elemento.parent().width() * (anchura / 100);
                 //alert(elemento.width());
                 var fontSizeEle = elemento.css("font-size").substring(0,elemento.css("font-size").length - 2);
-                var anchoEle = elemento.width();// <- error aqui
+                var anchoEle = elemento.width();
 
                 var fontAlto = (altura * maxAlt) / 100;
                 var fontAncho = (maxAncho * fontSizeEle) / anchoEle;
                 //console.log(maxAlt+" - "+fontAlto+" - "+fontAncho);
                 //console.log(elemento.html()+" -> "+maxAncho+" * "+fontSizeEle+" / "+anchoEle);
-
+				
+				
                 if(fontAlto < fontAncho){
                         elemento.css({fontSize : fontAlto+"px"});
                 }else{
                         elemento.css({fontSize : fontAncho+"px"});				
                 }	
+				
+				// Centra en vertical
+				var margenElemento = (maxAlt - elemento.height()) / 2;
+				elemento.css({marginTop: margenElemento});
 			
             }
             function seguirTexto(elemento){
                 var modelo = elemento.parent().attr("data-modelo");
                 var fSizeModelo = $("#contenido").find("#"+modelo).children().first().css("font-size");
-                console.log(fSizeModelo);
+                //console.log(fSizeModelo);
                 elemento.css({fontSize : fSizeModelo});
+				
+				// Centra en vertical
+				var maxAlt = elemento.parent().height();
+				var margenElemento = (maxAlt - elemento.height()) / 2;
+				elemento.css({marginTop: margenElemento});
             }
             function prepararTexto(){
                     $(".ajustTexto").each(function (){

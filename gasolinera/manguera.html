@@ -26,26 +26,26 @@
     </div>
 </div>
 <span id="cargado"></span>
-<div class="manguera col-xs-2 col-xs-offset-2 ajustAlt ajustMargen" data-gasolina="gasolina1" data-altura="80" data-margen="10">
+<div class="manguera col-xs-2 col-xs-offset-2 ajustAlt ajustMargen" data-gasolina="gasolina1QueSeaLargoPls" data-altura="80" data-margen="10">
     manguera1
 </div>
-<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina2" data-altura="80" data-margen="10">
+<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina2QueSeaLargoPls" data-altura="80" data-margen="10">
     manguera2
 </div>
-<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina3" data-altura="80" data-margen="10" >
+<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina3QueSeaLargoPls" data-altura="80" data-margen="10">
     manguera3
 </div>
-<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina4" data-altura="80" data-margen="10" >
+<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina4QueSeaLargoPls" data-altura="80" data-margen="10">
     manguera4
 </div>
 <script>
     atras = "index.html";
     siguiente = "cantidad.html";
     ejecutar = function(){
-        $("#atras").hide();
-       $("#siguiente").show();
-       add("<span id='monedas'>"+$("#monedasocultas").html()+"</span>");
-       ajustarTodo();
+		$("#atras").hide();
+        $("#siguiente").hide();
+        //add("<span id='monedas'>"+$("#monedasocultas").html()+"</span>");
+        ajustarTodo();
     };
 	
     $(document).ready(function(){
@@ -62,7 +62,8 @@
             $(this).css({
                 backgroundColor: "#e2e2e2"
             });
-            variables.gasolina= $(this).attr("data-gasolina");
+            variables.gasolina = $(this).attr("data-gasolina");
+			$("#siguiente").show();
         });
         $(".cerrarMonedas").mouseup(function(){
             remove("monedas");
