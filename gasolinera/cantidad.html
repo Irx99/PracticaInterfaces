@@ -37,7 +37,7 @@
 		<div class="ajustAlt" data-altura="25" style="border: 0px solid green">
 			<img class="boton" data-valor="100" data-unidad="dinero" src="imagenes/botonSumar.png"></button>
 		</div>
-		<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="50" style="border: 0px solid green; white-space: nowrap;">
+		<div class="ajustAlt seguirTexto" data-modelo="textoLider" data-altura="50" style="border: 0px solid green; white-space: nowrap;">
 			<span id="dineroUnidades" class="casillaNumero">0 .</span>
 		</div>
 		<div class="ajustAlt" data-altura="25" style="border: 0px solid green">
@@ -100,7 +100,7 @@
 		<div class="ajustAlt" data-altura="25" style="border: 0px solid green">	
 			<img class="boton" data-valor="1000" data-unidad="litros" src="imagenes/botonSumar.png"></button>
 		</div>	
-		<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="50" style="border: 0px solid green; white-space: nowrap;">	
+		<div id="textoLider" class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="50" style="border: 0px solid green; white-space: nowrap;">	
 			<span id="litrosDecenas" class="casillaNumero">0</span>
 		</div>	
 		<div class="ajustAlt" data-altura="25" style="border: 0px solid green">		
@@ -112,7 +112,7 @@
 		<div class="ajustAlt" data-altura="25" style="border: 0px solid green">	
 			<img class="boton" data-valor="100" data-unidad="litros" src="imagenes/botonSumar.png"></button>
 		</div>
-		<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="50" style="border: 0px solid green; white-space: nowrap;">	
+		<div class="ajustAlt seguirTexto" data-modelo="textoLider" data-altura="50" style="border: 0px solid green; white-space: nowrap;">	
 			<span id="litrosUnidades" class="casillaNumero">0 .</span>
 		</div>
 		<div class="ajustAlt" data-altura="25" style="border: 0px solid green">	
@@ -168,6 +168,7 @@ ejecutar = function(){
 		// euros por litro
 		conversion = 1.05;
 		$("#gasolina").html(variables.gasolina);
+		ajustarTodo();
 		//redimension();
 	};
 
@@ -239,52 +240,4 @@ function actualizarValores(){
 	$("#litrosDecimas").text     ( parseInt ( (litros / 10) % 10   ));
 	$("#litrosCentesimas").text  ( parseInt ( (litros / 1) % 10    )); 
 }
-
-
-/*
-function redimension(){
-	// Texto
-	var divHeight = $(".div1").innerHeight();
-	var divWidth = $(".div1").innerWidth();
-		
-	var sizeAncho = (($(".div1").width() * $(".parraf1").css("font-size").substring(0,$(".parraf1").css("font-size").length - 2) ) / $("#texto1").width() - 3 );
-	var sizeAlto = (divHeight/10)*3;
-	
-	if(sizeAncho < sizeAlto){
-		var sizeTipo = sizeAncho;
-	}else{
-		var sizeTipo = sizeAlto;
-	}
-
-        $(".div1").children().each(function(){
-            $(this).css({
-                marginTop: (divHeight/20)*3+"px"
-            });
-        });
-	$(".parraf1").css({fontSize: sizeTipo});
-	$(".parraf1").css({lineHeight: "120%"});
-
-	// Cajas
-        $(".div2").children().each(function(){
-            if(!$(this).hasClass("finCasilla")){
-                $(this).css({
-                    marginTop: (divHeight/20)*3+"px"
-                });
-            }
-        });
-	$(".div2").css({fontSize: sizeTipo});
-	$(".casilla").css({lineHeight: "166.6666%"});
-        
-        // Caja final ("€" y "litros")
-//	var sizeBox = $(".finCasilla").innerHeight();
-//	var sizeText = $(".finCasilla").css("font-size").substring(0,$(".parraf1").css("font-size").length - 2);
-//	var paddingFinal = (sizeBox - sizeText) / 2;
-//        $(".finCasilla").css({
-//            marginTop: paddingFinal+"px"
-//        });
-//	$(".finCasilla").css({lineHeight: "0%"});
-	//Puntos
-	//$("#punto1").({line-height: "166.6666%"});
-}
-*/
 </script>
