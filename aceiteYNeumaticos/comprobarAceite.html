@@ -1,0 +1,131 @@
+<div class="ajustAlt" data-altura="100">
+	<div class="col-xs-offset-1 col-xs-9 ajustAlt ajustTexto" data-altura="20" data-altoTexto="100" data-anchoTexto="100">
+		INTRODUZCA EL NUMERO DE KILOMETROS<br/>RECORRIDOS POR EL VEHICULO
+	</div>
+	<div class="div2 col-xs-offset-2 col-xs-12 ajustAlt ajustMargen text-center parraf1" data-altura="30" data-margen="5" style="border: 0px solid blue">
+		<!-- Centenas de Millar -->
+		<div class="casilla col-xs-1 ajustAlt" data-altura="100" style="border: 0px solid black; margin: 0px">
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">
+				<img class="boton" data-valor="100000" src="imagenes/botonSumar.png"></img>
+			</div>
+			<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="50" style="border: 0px solid green">
+				<span id="centenasDeMillar" class="casillaNumero">0</span>
+			</div>
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">
+				<img class="boton" data-valor="-100000" src="imagenes/botonRestar.png"></img>
+			</div>	
+		</div>
+		<!-- Decenas de Millar -->
+		<div class="casilla col-xs-1 ajustAlt" data-altura="100" style="border: 0px solid black; margin: 0px">
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">
+				<img class="boton" data-valor="10000" src="imagenes/botonSumar.png"></img>
+			</div>
+			<div id="textoLider" class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="50" style="border: 0px solid green">
+				<span id="decenasDeMillar" class="casillaNumero" style="border: 0px solid red">0</span>
+			</div>
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">
+				<img class="boton" data-valor="-10000" src="imagenes/botonRestar.png"></img>
+			</div>		
+		</div>
+		<!-- Unidades de Millar -->
+		<div class="casilla col-xs-1 ajustAlt" data-altura="100" style="border: 0px solid black; margin: 0px">
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">
+				<img class="boton" data-valor="1000" src="imagenes/botonSumar.png"></img>
+			</div>
+			<div class="ajustAlt seguirTexto" data-modelo="textoLider" data-altura="50" style="border: 0px solid green; white-space: nowrap;">
+				<span id="unidadesDeMillar" class="casillaNumero">0 .</span>
+			</div>
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">
+				<img class="boton" data-valor="-1000" src="imagenes/botonRestar.png"></img>
+			</div>
+		</div>
+		<!-- Centenas -->
+		<div class="casilla col-xs-1 ajustAlt" data-altura="100" style="border: 0px solid black; margin: 0px">
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">
+				<img class="boton" data-valor="100" src="imagenes/botonSumar.png"></img>
+			</div>
+			<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="50" style="border: 0px solid green">
+				<span id="centenas" class="casillaNumero">0</span>
+			</div>
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">
+				<img class="boton" data-valor="-100" src="imagenes/botonRestar.png"></img>
+			</div>		
+		</div>
+		<!-- Decenas -->
+		<div class="casilla col-xs-1 ajustAlt" data-altura="100" style="border: 0px solid black; margin: 0px">
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">
+				<img class="boton" data-valor="10" src="imagenes/botonSumar.png"></img>
+			</div>
+			<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="50" style="border: 0px solid green; white-space: nowrap;">
+				<span id="decenas" class="casillaNumero">0</span>
+			</div>
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">	
+				<img class="boton" data-valor="-10" src="imagenes/botonRestar.png"></img>
+			</div>	
+		</div>
+		<!-- Unidades -->
+		<div class="casilla col-xs-1 ajustAlt" data-altura="100" style="border: 0px solid black; margin: 0px">
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">
+				<img class="boton" data-valor="1" src="imagenes/botonSumar.png"></img>
+			</div>
+			<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="50" style="border: 0px solid green; white-space: nowrap;">
+				<span id="unidades" class="casillaNumero">0</span>
+			</div>
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">	
+				<img class="boton" data-valor="-1" src="imagenes/botonRestar.png"></img>
+			</div>	
+		</div>
+		<!-- Kilometros -->
+		<div class="casilla col-xs-2 ajustAlt" data-altura="100" style="border: 0px solid black; margin: 0px; height: 100%">
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">	
+				<img class="boton" data-valor="1" data-unidad="litros" class="boton btn-block btn-info invisible"></button>
+			</div>	
+			<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="50" style="border: 0px solid green; white-space: nowrap;">
+				<span class="casillaNumero">kilometros</span>
+			</div>
+			<div class="ajustAlt" data-altura="25" style="border: 0px solid green">	
+				<img class="boton" data-valor="-1" data-unidad="litros" class="boton btn-block btn-info invisible"></button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var atras = "index.html";
+    var siguiente = "finOperacion.html";
+	var kilometros = 0;
+	
+	ejecutar = function(){
+		$("#atras").show();
+		$("#siguiente").hide();
+	};
+	
+	$(document).ready(function(){
+		// botones
+		$(".boton").click(function(){
+			
+			var valor = kilometros;
+			valor = parseInt(valor) + parseInt($(this).attr("data-valor"));
+			
+			if(valor >= 0 && valor <= 999999){
+				kilometros = valor;
+				actualizarValores();
+				
+				if(valor != 0){
+					$("#siguiente").show();
+				}else{
+					$("#siguiente").hide();
+				}
+			}
+		});
+	});
+	
+	function actualizarValores(){
+		$("#centenasDeMillar").text    ( parseInt (  kilometros / 100000      ));
+		$("#decenasDeMillar").text     ( parseInt ( (kilometros / 10000) % 10 ));
+		$("#unidadesDeMillar").text    ( parseInt ( (kilometros / 1000) % 10  )+" .");
+		$("#centenas").text            ( parseInt ( (kilometros / 100) % 10   ));
+		$("#decenas").text             ( parseInt ( (kilometros / 10) % 10    ));
+		$("#unidades").text            ( parseInt ( (kilometros / 1) % 10    ));
+	}
+	
+</script>
