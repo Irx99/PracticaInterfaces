@@ -1,14 +1,16 @@
-<div class="manguera col-xs-2 col-xs-offset-2 ajustAlt ajustMargen" data-gasolina="gasolina1QueSeaLargoPls" data-altura="80" data-margen="10">
-    manguera1
-</div>
-<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina2QueSeaLargoPls" data-altura="80" data-margen="10">
-    manguera2
-</div>
-<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina3QueSeaLargoPls" data-altura="80" data-margen="10">
-    manguera3
-</div>
-<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina4QueSeaLargoPls" data-altura="80" data-margen="10">
-    manguera4
+<div class="ajustAlt" data-altura="100">
+	<div class="manguera col-xs-2 col-xs-offset-2 ajustAlt ajustMargen" data-gasolina="gasolina1QueSeaLargoPls" data-altura="80" data-margen="10">
+		<img src="imagenes/manguera1.png"></img>
+	</div>
+	<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina2QueSeaLargoPls" data-altura="80" data-margen="10">
+		<img src="imagenes/manguera1.png"></img>
+	</div>
+	<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina3QueSeaLargoPls" data-altura="80" data-margen="10">
+		<img src="imagenes/manguera1.png"></img>
+	</div>
+	<div class="manguera ajustAlt ajustMargen col-xs-2" data-gasolina="gasolina4QueSeaLargoPls" data-altura="80" data-margen="10">
+		<img src="imagenes/manguera1.png"></img>
+	</div>
 </div>
 <script>
     atras = "index.html";
@@ -21,8 +23,8 @@
     };
 	
     $(document).ready(function(){
-        $("#contenido").children(".manguera").click(function(){
-            $("#contenido").children(".manguera").each(function(){
+        $("#contenido").find(".manguera").click(function(){
+            $("#contenido").find(".manguera").each(function(){
                 $(this).css({
                    backgroundColor:"white" 
                 });
