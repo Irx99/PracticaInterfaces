@@ -1,11 +1,24 @@
-<div class="col-xs-offset-1 col-xs-10 ajustAlt ajustTexto" data-altura="100" data-altoTexto="80" data-anchoTexto="100">
+<div class="col-xs-offset-1 col-xs-10 ajustAlt ajustTexto" data-altura="50" data-altoTexto="80" data-anchoTexto="100">
 	GRACIAS POR UTILIZAR NUESTROS SERVICIOS
+</div>
+<div class="col-xs-offset-4 col-xs-4 ajustAlt" data-altura="30" style="border: 0px solid black">
+	<img id="volverAlInicio" src="imagenes/botonVolverInicio.png" style="border: 1px solid black"></img>
 </div>
 <script>
 	ejecutar = function(){
 		$("#atras").hide();
 		$("#siguiente").hide();
-                $("#abrirmenu").hide();
-                setTimeout(inicio, 5000);
+        $("#abrirmenu").hide();
+        setTimeout(inicio, 5000);
 	};
+	
+	$(document).ready(function(){
+		$("#volverAlInicio").click(function(){
+			$("#contenido").load("index.html", function(){ 
+                prepararTexto();
+				ajustarTodo();
+                ejecutar();
+            });
+		});
+	});
 </script>

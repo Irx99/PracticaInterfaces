@@ -12,10 +12,16 @@
         </div>
     </div>
     <div class="col-xs-12 ajustable " data-margen="87.5" data-altura="12.5" style="z-index:2;position:fixed; padding: 0px; background-color: rgba(135,148,169,1)">
-        <div class="pinIncorrecto col-xs-offset-3 col-xs-3 ajustAlt ajustTexto pin" data-altoTexto='90' data-anchoTexto='100' data-altura="100" style="background-color: red; visibility: hidden" >Introducir Pin Incorrecto</div>
+        <div class="pinIncorrecto col-xs-3 ajustAlt ajustTexto pin" data-altoTexto='90' data-anchoTexto='100' data-altura="100" style="background-color: red; visibility: hidden" >Introducir Pin Incorrecto</div>
         <div class="pinCorrecto col-xs-3 ajustAlt ajustTexto pin" data-altura="100" data-altoTexto='90' data-anchoTexto='100' style="background-color: green; visibility: hidden" >&nbsp;Introducir Pin Correcto&nbsp;</div>
+		<div class="col-xs-6 ajustMargen" data-margen="30">
+			<label style="height: 30%" for="deposito">Espacio libre en el deposito:&nbsp;</label>
+			<input id="espacioDeposito" style="height: 30%" name="deposito" min="0" type="number"/>
+			<label data-altura="30">&nbsp;litros</label>
+		</div>
     </div>
 </div>
+<!-- Body -->
 <div id="mensajes" class="ajustTexto ajustAlt ajustMargen col-xs-6 col-xs-offset-3" data-altura="20" data-margen="40" data-altoTexto="100" data-anchoTexto="100" style="text-align: center">
     INSERTE LA TARJETA
 </div>
@@ -98,7 +104,7 @@
                 }
             });
             $(".pinCorrecto").click(function(){
-                if($("#menu").find(".fondos").prop("checked")==true){
+                if($("#menu").find(".fondos").prop("checked")==true){				
                     var t = {
                         lineas : 5,
                         texto :[
@@ -111,11 +117,26 @@
                     };
                     var b = {
                         texto: "Aceptar",
-                        redirigir: "animacionGasolina.html",
+                        //redirigir: "animacionGasolina.html",
                         estilo :{backgroundColor: "green", color:"white"}
                     };
                     popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'green'}}, b);
-                    remove("menu");
+					
+					$("#contenido").load("animacionGasolina.html", function(){
+						if($("#espacioDeposito").val() <= 0 || $("#espacioDeposito").val() == undefined){
+							variables.espacioDeposito = 200;
+						}else{
+							variables.espacioDeposito = $("#espacioDeposito").val();
+						}
+					
+						variables.recogerCambio = true;
+						remove("menu");
+						prepararTexto();
+						ajustarTodo();
+						ejecutar();
+					});
+					
+                    //remove("menu");
                 }else{
                     var t = {
                         lineas : 5,
@@ -133,6 +154,7 @@
                         estilo :{backgroundColor: "red", color:"white"}
                     };
                     popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'red'}}, b);
+					
                     remove("menu");
                 }
             });
