@@ -1,0 +1,46 @@
+<div class="col-xs-offset-3 col-xs-6 ajustAlt" data-altura="80" style="border: 0px solid pink; line-height: 100%; padding: 0px">
+	<div class="ajustTexto ajustAlt col-xs-12" data-altura="20" data-altoTexto="100" data-anchoTexto="100" style="border: 0px solid black; margin: 0px">
+		HA SELECCIONADO
+	</div>	
+	<div class="col-xs-12 ajustAlt" data-altura="20" style="border: 0px solid black; margin: 0px; padding: 0px">
+		<div class="col-xs-6 seguirTexto ajustAlt" data-modelo="gasolina" data-altura="100" data-altoTexto="100" data-anchoTexto="100">
+			Gasolina:
+		</div >
+		<div id="gasolina" class="col-xs-6 ajustTexto ajustAlt" data-altura="100" data-altoTexto="100" data-anchoTexto="100">
+			ERROR
+		</div>
+	</div><br/>
+	<div class="col-xs-12 ajustAlt" data-altura="20" style="border: 0px solid black; margin: 0px; padding: 0px">
+		<div class="col-xs-6 seguirTexto ajustAlt" data-modelo="gasolina" data-altura="100" data-altoTexto="100" data-anchoTexto="100">
+			Litros:
+		</div>
+		<div id="litros" class="col-xs-6 seguirTexto ajustAlt" data-modelo="gasolina" data-altura="100" data-altoTexto="100" data-anchoTexto="100">
+			ERROR
+		</div>
+	</div><br/>
+	<div class="col-xs-12 ajustAlt" data-altura="20" style="border: 0px solid black; margin: 0px; padding: 0px">
+		<div class="col-xs-6 seguirTexto ajustAlt" data-modelo="gasolina" data-altura="100" data-altoTexto="100" data-anchoTexto="100">
+			Precio:
+		</div>
+		<div id="dinero" class="col-xs-6 seguirTexto ajustAlt" data-modelo="gasolina" data-altura="100" data-altoTexto="100" data-anchoTexto="100">
+			ERROR
+		</div>
+	</div><br/>
+</div>
+<script>
+atras = "cantidad.html";
+siguiente = "tipoPago.html";
+ejecutar = function(){
+	$("#atras").show();
+        $("#siguiente").show();
+        $("#abrirmenu").hide();
+                        
+	$("#gasolina").children().first().html(variables.gasolina);
+	$("#dinero").children().first().html((variables.dinero/100.0).toFixed(2)+" €");
+	
+	$("#litros").children().first().html((variables.litros/100.0).toFixed(2)+" litros");
+	
+	ajustarTodo();
+};
+</script>
+
