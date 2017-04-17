@@ -25,11 +25,11 @@
         var intentos = 3;
         var tarjeta = false;
 	ejecutar = function(){
-		$("#atras").show();
-		$("#siguiente").hide();
-        $("#abrirmenu").show();
-        intentos = 3;
-                
+            $("#atras").show();
+            $("#siguiente").hide();
+            $("#abrirmenu").show();
+            variables.recogerCambio = false;
+            intentos = 3;
 	};
 	logicaMenu= function(){
             $(".tarjeta").click(function(){
