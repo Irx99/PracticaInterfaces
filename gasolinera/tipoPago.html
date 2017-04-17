@@ -6,7 +6,7 @@
 		<button id="pagoEfectivo" class="btn-block" style="height: 100%">
 			PAGO EN EFECTIVO<br/><br/>
 			<div class="col-xs-12 ajustAlt ajustMargen" data-altura="70" data-margen="10">
-				<img src="imagenes/pagoEnEfectivo.png"></img>
+				<img src="imagenes/pagoEnEfectivo.png" data-altoImg="152" data-anchoImg="270"/>
 			</div>
 		</button>
 	</div>
@@ -14,7 +14,7 @@
 		<button id="pagoTarjeta" class="btn-block" style="height: 100%">
 			PAGO CON TARJETA<br/><br/>
 			<div class="col-xs-12 ajustAlt ajustMargen" data-altura="70" data-margen="10">
-				<img src="imagenes/pagoConTarjeta.png" style="max-width: 100%"></img>
+				<img src="imagenes/pagoConTarjeta.png" style="max-width: 100%" data-altoImg="152" data-anchoImg="270"/>
 			</div>
 		</button>
 	</div>
@@ -22,7 +22,7 @@
 		<button id="pagoNFC" class="btn-block" style="height: 100%">
 			PAGO VIA NFC<br/><br/>
 			<div class="col-xs-12 ajustAlt ajustMargen" data-altura="70" data-margen="10">
-				<img src="imagenes/pagoViaNFC.png" style="max-width: 100%"></img>
+				<img src="imagenes/pagoViaNFC.png" style="max-width: 100%" data-altoImg="152" data-anchoImg="270"/>
 			</div>
 		</button>
 	</div>
@@ -47,9 +47,19 @@
 							{contenido: "Por favor, recoja su cambio"}
 						]
 			}
-		
+			var botonPopUp = {
+				texto: "Aceptar",
+				estilo :{backgroundColor: "blue", color: "white"}
+			}
 			
-			popUp(htmlPopUp,null,null,null);
+			var estiloPopUp = {
+                        estilo : {
+                            border : "3px solid black",
+							borderRadius: "15px"
+                        }
+                    };
+			
+			popUp(htmlPopUp,null,estiloPopUp,botonPopUp);
 		}
 	};
 

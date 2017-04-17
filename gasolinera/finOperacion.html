@@ -2,7 +2,7 @@
 	GRACIAS POR UTILIZAR NUESTROS SERVICIOS
 </div>
 <div class="col-xs-offset-4 col-xs-4 ajustAlt" data-altura="30" style="border: 0px solid black">
-	<img id="volverAlInicio" src="imagenes/botonVolverInicio.png" style="border: 1px solid black"></img>
+	<img id="volverAlInicio" data-altoImg="208" data-anchoImg="396" src="imagenes/botonVolverInicio.png" style="border: 1px solid black"></img>
 </div>
 <script>
 	ejecutar = function(){
@@ -14,11 +14,7 @@
 	
 	$(document).ready(function(){
 		$("#volverAlInicio").click(function(){
-			$("#contenido").load("index.html", function(){ 
-                prepararTexto();
-				ajustarTodo();
-                ejecutar();
-            });
+			inicio();
 		});
 	});
 </script>

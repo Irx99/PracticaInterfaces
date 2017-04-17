@@ -41,12 +41,36 @@ and open the template in the editor.
 				max-width: 100%;
 				max-height: 100%
 			}
-/*			img{
+			#b_superior{		
+				background: rgba(128,128,128,1);
+				background: -moz-linear-gradient(top, rgba(128,128,128,1) 0%, rgba(181,181,181,1) 69%, rgba(214,214,214,1) 100%);
+				background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(128,128,128,1)), color-stop(69%, rgba(181,181,181,1)), color-stop(100%, rgba(214,214,214,1)));
+				background: -webkit-linear-gradient(top, rgba(128,128,128,1) 0%, rgba(181,181,181,1) 69%, rgba(214,214,214,1) 100%);
+				background: -o-linear-gradient(top, rgba(128,128,128,1) 0%, rgba(181,181,181,1) 69%, rgba(214,214,214,1) 100%);
+				background: -ms-linear-gradient(top, rgba(128,128,128,1) 0%, rgba(181,181,181,1) 69%, rgba(214,214,214,1) 100%);
+				background: linear-gradient(to bottom, rgba(128,128,128,1) 0%, rgba(181,181,181,1) 69%, rgba(214,214,214,1) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#808080', endColorstr='#d6d6d6', GradientType=0 );
+			}
+			
+			#b_inferior{
+				background: rgba(254,254,254,1);
+				background: -moz-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(214,214,214,1) 0%, rgba(181,181,181,1) 31%, rgba(128,128,128,1) 100%);
+				background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(254,254,254,1)), color-stop(0%, rgba(214,214,214,1)), color-stop(31%, rgba(181,181,181,1)), color-stop(100%, rgba(128,128,128,1)));
+				background: -webkit-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(214,214,214,1) 0%, rgba(181,181,181,1) 31%, rgba(128,128,128,1) 100%);
+				background: -o-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(214,214,214,1) 0%, rgba(181,181,181,1) 31%, rgba(128,128,128,1) 100%);
+				background: -ms-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(214,214,214,1) 0%, rgba(181,181,181,1) 31%, rgba(128,128,128,1) 100%);
+				background: linear-gradient(to bottom, rgba(254,254,254,1) 0%, rgba(214,214,214,1) 0%, rgba(181,181,181,1) 31%, rgba(128,128,128,1) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#808080', GradientType=0 );
+			}
+			/*
+				img{
 				max-width: 100%;
 				max-height: 100%;
 				min-width: 100%;
 				min-height: 100%;
 			}*/
+			
+			
         </style>
         <script src="../bootstrap/js/bootstrap.js"></script>
         <script>
@@ -422,11 +446,11 @@ and open the template in the editor.
     <body style="overflow: hidden">
 <!--    <body>-->
         <div id="comenzar" style=" position:fixed;z-index: 3" data-altura="100" class="ajustable col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center; padding-top: 20%">
-                <h1 id="letraEspera" style="color: white">Pulse para comenzar</h1>
+            <div id="letraEspera" class="col-md-12 col-sm-12 col-xs-12 ajustAlt ajustMargen ajustTexto" data-altoTexto="100" data-anchoTexto="50" data-altura="20" data-margen="40" style="color: white;text-align: center">
+                Pulse para comenzar
             </div>
-        </div>
-        <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse; padding:0px">
+        </div>	
+        <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style= "padding:0px; border-bottom: 1px solid gray">
             <div id="abrirmenu" class="ajustAlt col-xs-1 col-xs-offset-11" data-altura="100" style="position:absolute; z-index: 2">
                 <img class="botonDesplegable col-xs-1  ajustAlt" data-anchoImg='200' data-altoImg='200' data-altura="100" src="imagenes/menuAbrir.png"/>
             </div>
@@ -435,15 +459,15 @@ and open the template in the editor.
         <div id="contenido" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="77.5" style="background-color: white; padding: 0px">
             
         </div>
-        <div id="b_inferior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="12.5" style="background-color: chartreuse; padding: 0px">
-            <div id="atras" class="ajustAlt col-xs-1" data-altura="100" style="background-color:red">
-                atras
+        <div id="b_inferior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="12.5" style="padding: 0px; border-top: 1px solid gray">
+            <div id="atras" class="ajustAlt col-xs-1" data-altura="100">
+                <img src="imagenes/atras.png"></img>
             </div>
 <!--            <div id="popUp" class="ajustAlt col-xs-1 col-xs-offset-5" data-altura="100" style="background-color:yellow; position:absolute; z-index: 2">
                 popUp
             </div>-->
-            <div id="siguiente" class="ajustAlt col-xs-1 col-xs-offset-11" data-altura="100" style="background-color:blue; position:absolute; z-index: 2">
-                siguiente
+            <div id="siguiente" class="ajustAlt col-xs-1 col-xs-offset-11" data-altura="100" style="position:absolute; z-index: 2">
+                <img src="imagenes/siguiente.png"></img>
             </div>
         </div>
 <!--        <div id="usuario" style=" position:fixed;z-index: 2" data-altura="100" class="ajustable col-md-12 col-sm-12 col-xs-12">

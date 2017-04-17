@@ -47,9 +47,19 @@
 							{contenido: "Por favor, recoja su cambio"}
 						]
 			}
-		
+			var botonPopUp = {
+				texto: "Aceptar",
+				estilo :{backgroundColor: "blue", color: "white"}
+			}
 			
-			popUp(htmlPopUp,null,null,null);
+			var estiloPopUp = {
+                        estilo : {
+                            border : "3px solid black",
+							borderRadius: "15px"
+                        }
+                    };
+			
+			popUp(htmlPopUp,null,estiloPopUp,botonPopUp);
 		}
 	};
 

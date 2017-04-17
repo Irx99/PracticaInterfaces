@@ -41,12 +41,36 @@ and open the template in the editor.
 				max-width: 100%;
 				max-height: 100%
 			}
-			img{
+			#b_superior{		
+				background: rgba(128,128,128,1);
+				background: -moz-linear-gradient(top, rgba(128,128,128,1) 0%, rgba(181,181,181,1) 69%, rgba(214,214,214,1) 100%);
+				background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(128,128,128,1)), color-stop(69%, rgba(181,181,181,1)), color-stop(100%, rgba(214,214,214,1)));
+				background: -webkit-linear-gradient(top, rgba(128,128,128,1) 0%, rgba(181,181,181,1) 69%, rgba(214,214,214,1) 100%);
+				background: -o-linear-gradient(top, rgba(128,128,128,1) 0%, rgba(181,181,181,1) 69%, rgba(214,214,214,1) 100%);
+				background: -ms-linear-gradient(top, rgba(128,128,128,1) 0%, rgba(181,181,181,1) 69%, rgba(214,214,214,1) 100%);
+				background: linear-gradient(to bottom, rgba(128,128,128,1) 0%, rgba(181,181,181,1) 69%, rgba(214,214,214,1) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#808080', endColorstr='#d6d6d6', GradientType=0 );
+			}
+			
+			#b_inferior{
+				background: rgba(254,254,254,1);
+				background: -moz-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(214,214,214,1) 0%, rgba(181,181,181,1) 31%, rgba(128,128,128,1) 100%);
+				background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(254,254,254,1)), color-stop(0%, rgba(214,214,214,1)), color-stop(31%, rgba(181,181,181,1)), color-stop(100%, rgba(128,128,128,1)));
+				background: -webkit-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(214,214,214,1) 0%, rgba(181,181,181,1) 31%, rgba(128,128,128,1) 100%);
+				background: -o-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(214,214,214,1) 0%, rgba(181,181,181,1) 31%, rgba(128,128,128,1) 100%);
+				background: -ms-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(214,214,214,1) 0%, rgba(181,181,181,1) 31%, rgba(128,128,128,1) 100%);
+				background: linear-gradient(to bottom, rgba(254,254,254,1) 0%, rgba(214,214,214,1) 0%, rgba(181,181,181,1) 31%, rgba(128,128,128,1) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#808080', GradientType=0 );
+			}
+			/*
+				img{
 				max-width: 100%;
 				max-height: 100%;
 				min-width: 100%;
 				min-height: 100%;
-			}
+			}*/
+			
+			
         </style>
         <script src="../bootstrap/js/bootstrap.js"></script>
         <script>
@@ -55,17 +79,19 @@ and open the template in the editor.
             var letraEspera = true;
             var atras = "index.html";
             var siguiente = "index.html";
+            var menu = "none";
             var variables = new Object();
             var ejecutar = function(){};
             var fPopUp = function(){};
+            var logicaMenu = function(){};
             $(document).ready(function(){
 				$("#atras").hide();
 				$("#siguiente").hide();
-			
+				$("#abrirmenu").hide();
                 var intervalo = setInterval(cambiarLetraEspera, 500);
                 $("#contenido").load("inicio.html", function(){ 
                     prepararTexto();
-					ajustarTodo();
+                    ajustarTodo();
                     ejecutar();
                 });
 
@@ -87,7 +113,38 @@ and open the template in the editor.
 						ajustarTodo();
                         ejecutar();
                     });
-                });    	
+                });    
+//                $("#popUp").click(function(){
+//                    var texto = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+//                    var t = {
+//                        lineas : 5,
+//                        texto :[
+//                            {contenido: "a"},
+//                            {contenido: ""},
+//                            {contenido: texto},
+//                            {contenido: ""},
+//                            {contenido: ""}
+//                        ]
+//                    };
+//                    var b = {
+//                        texto: "Aceptar",
+//                        redirigir: "cantidad.html",
+//                        estilo :{backgroundColor: "blue", color:"white"}
+//                    };
+//                    popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'red'}}, b);
+//                });
+                $("#abrirmenu").click(function(){
+                    add("<span id='menu' >"+$("body").find("#"+menu).html()+"</span>");
+                    ajustarTodo();
+                    $(".cerrarMenu").click(function(){
+                        remove("menu");
+                    });
+                    $("#menu").ready(logicaMenu());
+                });
+                $("body").click(function(){
+                    actualizarTimeOut();
+                });
+
             });
             $(window).resize(function(){
                 ajustarTodo();                            
@@ -132,7 +189,7 @@ and open the template in the editor.
                 window.clearTimeout(volver);
             }
             function inicioTimeOut(){
-                volver = setTimeout(inicio, 300000);
+                volver = setTimeout(inicio, 60000);
             }
             function inicio(){
                 window.location.href="index.html";
@@ -151,6 +208,7 @@ and open the template in the editor.
                 }
             }
             function ajustarTodo(){
+                
                 $(".ajustable").each(function(){
                     ajustar($(this));
                 });
@@ -166,7 +224,14 @@ and open the template in the editor.
                 });
 				$("body").find(".seguirModelo").each(function(){
                     seguirTexto($(this));
-                });                
+                });  
+
+                $("body").find("img").each(function(){
+                    ajustarImg($(this));
+                });
+                $("#fondoPopUp").find(".textoPreparado").each(function(){
+                    centrarTexto($(this));
+                });
 //                ajustarAltura($("#atras"));
 //                ajustarAltura($("#siguiente"));
             }
@@ -216,10 +281,14 @@ and open the template in the editor.
             }
             function prepararTexto(){
                     $("body").find(".ajustTexto").each(function (){
+                        if( $(this).find(".textoPreparado").length == 0){
                             $(this).html("<span class='textoPreparado'>"+$(this).html()+"</span>");
+                        }
                     });
                     $("body").find(".seguirTexto").each(function (){
+                        if( $(this).find(".seguirModelo").length == 0){
                             $(this).html("<span class='seguirModelo textoPreparado'>"+$(this).html()+"</span>");
+                        }
                     });
             }
             function popUp(html, fondo, caja, boton){
@@ -335,6 +404,43 @@ and open the template in the editor.
                 prepararTexto();
                 ajustarTodo();
             }
+            function ajustarImg(elemento){
+                var anchoImg = elemento.attr("data-anchoImg");
+                var altoImg = elemento.attr("data-altoImg");
+                var anchoPadre = elemento.parent().width();
+                var altoPadre = elemento.parent().height();
+                if(anchoImg == null || altoImg == null){
+                    anchoImg = anchoPadre;
+                    altoImg = altoPadre;
+                }
+                    
+                if((100*anchoImg/anchoPadre)<(100*altoImg/altoPadre)){
+                    elemento.height(altoPadre);
+                    elemento.width(anchoImg*altoPadre/altoImg);
+                    var margenalto = 0;
+                    var margenizq= ((anchoPadre - elemento.width())/2);
+         
+                }
+                else{
+                    elemento.height(altoImg*anchoPadre/anchoImg);
+                    elemento.width(anchoPadre);
+                    var margenalto= ((altoPadre - elemento.height())/2);
+                    var margenizq = 0;
+                }
+                elemento.css({
+                    marginTop : margenalto+"px",
+                    marginLeft : margenizq+"px"
+                });
+                
+            }
+            function centrarTexto(elemento){
+                var ancho= elemento.width();
+                var anchoPadre = elemento.parent().width();
+                var margenizq = (anchoPadre-ancho)/2;
+                elemento.css({
+                    marginLeft : margenizq+"px"
+                });
+            }
             function quitarPopUp(){
                 $("#fondoPopUp").remove();
             }
@@ -343,23 +449,32 @@ and open the template in the editor.
     <body style="overflow: hidden">
 <!--    <body>-->
         <div id="comenzar" style=" position:fixed;z-index: 3" data-altura="100" class="ajustable col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center; padding-top: 20%">
-                <h1 id="letraEspera" style="color: white">Pulse para comenzar</h1>
+            <div id="letraEspera" class="col-md-12 col-sm-12 col-xs-12 ajustAlt ajustMargen ajustTexto" data-altoTexto="100" data-anchoTexto="50" data-altura="20" data-margen="40" style="color: white;text-align: center">
+                Pulse para comenzar
             </div>
-        </div>
-        <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse">
+        </div>	
+        <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style= "padding:0px; border-bottom: 1px solid gray">
+            <div id="abrirmenu" class="ajustAlt col-xs-1 col-xs-offset-11" data-altura="100" style="position:absolute; z-index: 2">
+                <img class="botonDesplegable col-xs-1  ajustAlt" data-anchoImg='200' data-altoImg='200' data-altura="100" src="imagenes/menuAbrir.png"/>
+            </div>
         </div>
 
         <div id="contenido" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="77.5" style="background-color: white; padding: 0px">
             
         </div>
-        <div id="b_inferior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="12.5" style="background-color: chartreuse; padding: 0px">
-            <div id="atras" class="ajustAlt col-xs-1" data-altura="100" style="background-color:red">
-                atras
+        <div id="b_inferior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="12.5" style="padding: 0px; border-top: 1px solid gray">
+            <div id="atras" class="ajustAlt col-xs-1" data-altura="100">
+                <img src="imagenes/atras.png"></img>
             </div>
-            <div id="siguiente" class="ajustAlt col-xs-1 col-xs-offset-11" data-altura="100" style="background-color:blue; position:absolute; z-index: 2">
-                siguiente
+<!--            <div id="popUp" class="ajustAlt col-xs-1 col-xs-offset-5" data-altura="100" style="background-color:yellow; position:absolute; z-index: 2">
+                popUp
+            </div>-->
+            <div id="siguiente" class="ajustAlt col-xs-1 col-xs-offset-11" data-altura="100" style="position:absolute; z-index: 2">
+                <img src="imagenes/siguiente.png"></img>
             </div>
         </div>
+<!--        <div id="usuario" style=" position:fixed;z-index: 2" data-altura="100" class="ajustable col-md-12 col-sm-12 col-xs-12">
+            
+        </div>-->
     </body>
 </html>
