@@ -1,5 +1,10 @@
-<div>
-	<button id="boton">Saltar a la siguiente pagina</button>
+<div class="col-xs-offset-1 col-xs-10 ajustAlt" data-altura="100">
+	<div id="mensajeCambio" class="ajustAlt ajustTexto invisible" data-altura="20" data-altoTexto="100" data-anchoTexto="100">
+		POR FAVOR RECOJA SU CAMBIO
+	</div>
+	<div class="ajustAlt ajustMargen" data-altura="50" data-margen="20">
+		<img id="animacion" src="imagenes/animacion/foto1.png" data-anchoImg="800" data-altoImg="600"/>
+	</div>
 </div>
 <script>
 	ejecutar = function(){
@@ -7,15 +12,43 @@
 		$("#siguiente").hide();
 		$("#abrirmenu").hide();
                 
-		alert("Tiene que salir un mensaje que diga recoja su cambio si es true -> "+variables.recogerCambio);
-		alert("Hay que hacer el calcula entre los litros que se hechan: "+variables.litros+" y el espacio libre en el deposito: "+variables.espacioDeposito+" (Si sale 200 no hay que parar)");
+		if(variables.recogerCambio){
+			$("#mensajeCambio").removeClass("invisible");
+		}
+		
+		//alert("Hay que hacer el calcula entre los litros que se hechan: "+variables.litros+" y el espacio libre en el deposito: "+variables.espacioDeposito+" (Si sale 200 no hay que parar)");
+		if(variables.litros > variables.espacioDeposito){
+			$("#animacion").attr("src", "imagenes/animacion/AnimacionDesborde.gif");
+			setTimeout(lanzarPopUp,9000);
+		}else{
+			$("#animacion").attr("src", "imagenes/animacion/animacion.gif");
+			setTimeout(siguienteInterfaz,9000);
+		}
 	};
 	
-	$("#boton").click(function(){
+	function siguienteInterfaz(){
 		$("#contenido").load("finOperacion.html", function(){ 
-				prepararTexto();
-				ajustarTodo();
-				ejecutar();
-			});
-	});
+			prepararTexto();
+			ajustarTodo();
+			ejecutar();
+		});
+	}
+	
+	function lanzarPopUp(){
+		var t = {
+			lineas : 4,
+			texto :[
+				{contenido: ""},
+				{contenido: "Su deposito esta lleno,"},
+				{contenido: "por favor recoja su cambio"},
+				{contenido: ""}
+			]
+		};
+		var b = {
+			texto: "Aceptar",
+			redirigir: "finOperacion.html",
+			estilo :{backgroundColor: "red", color:"white"}
+		};
+		popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'red'}}, b);
+	}
 </script>
