@@ -1,0 +1,118 @@
+<div class="col-xs-offset-1 col-xs-10 ajustAlt" data-altura="100" style="border: 0px solid black">
+	<div class="col-xs-12 ajustAlt ajustTexto" data-altura="30" data-altoTexto="100" data-anchoTexto="100" style="border: 0px solid black">
+		SELECCIONE EL NUMERO DE PASADAS DE LOS<br/>RODILLOS PARA EL LAVADO EXTERIOR
+	</div>
+	<div class="col-xs-12 ajustAlt" data-altura="20">
+		<div class="col-xs-3 ajustAlt" data-altura="100">
+			<button id="defecto" class="numRodillos btn-block btn-info" value="1" style="height: 100%">
+				<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="70" style="border: 0px solid black">
+					1
+				</div>
+				<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="30" style="border: 0px solid black">
+					(14.00€)
+				</div>
+			</button>
+		</div>
+		<div class="col-xs-3 ajustAlt" data-altura="100">
+			<button class="numRodillos btn-block btn-default col-xs-3" value="2" style="height: 100%">
+				<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="70" style="border: 0px solid black">
+					2
+				</div>
+				<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="30" style="border: 0px solid black">
+					(15.00€)
+				</div>
+			</button>
+		</div>
+		<div class="col-xs-3 ajustAlt" data-altura="100">
+			<button class="numRodillos btn-block btn-default col-xs-3" value="3" style="height: 100%">
+				<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="70" style="border: 0px solid black">
+					3
+				</div>
+				<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="30" style="border: 0px solid black">
+					(16.00€)
+				</div>
+			</button>
+		</div>
+		<div class="col-xs-3 ajustAlt" data-altura="100">
+			<button class="numRodillos btn-block btn-default col-xs-3" value="4" style="height: 100%">
+				<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="70" style="border: 0px solid black">
+					4
+				</div>
+				<div class="ajustAlt ajustTexto" data-altoTexto="100" data-anchoTexto="100" data-altura="30" style="border: 0px solid black">
+					(17.00€)
+				</div>
+			</button>
+		</div>
+	</div>
+	<div class="col-xs-offset-1 col-xs-10 ajustAlt ajustTexto" data-altura="20" data-altoTexto="100" data-anchoTexto="100" style="border: 0px solid black">
+		&#191;QUIERE USAR ABRILLANTADOR? (+2.00€)
+	</div>
+	<div class="col-xs-offset-2 col-xs-8 ajustAlt" data-altura="20" style="border: 0px solid black">
+		<div class="col-xs-3 ajustAlt ajustTexto" data-altura="100" data-altoTexto="100" data-anchoTexto="100">
+			SI:
+		</div>
+		<div class="col-xs-3 ajustAlt" data-altura="100" style="border: 0px solid pink">
+			<img id="opcionSi" src="imagenes/checkBoxVacio.png" data-altoImg="109" data-anchoImg="109"></img>
+		</div>
+		<div class="col-xs-3 ajustAlt ajustTexto" data-altura="100" data-altoTexto="100" data-anchoTexto="100">
+			NO:
+		</div>
+		<div class="col-xs-3 ajustAlt" data-altura="100" style="border: 0px solid pink">
+			<img id="opcionNo" src="imagenes/checkBoxLleno.png" data-altoImg="109" data-anchoImg="109"></img>
+		</div>
+	</div>
+</div>
+<script>
+	var atras = "index.html";
+	var siguiente = "tipoPago.html";
+	var precioBase;
+	var abrillantador = false;
+	var precioAbrillantador = 200;
+	var precioRodillos = 100;
+
+	var rodilloSeleccionado = $("#defecto");
+	
+	ejecutar = function(){
+		$("#atras").show();
+		$("#siguiente").show();
+		$("#abrirmenu").hide();
+		precioBase = variables.precio;
+		// Por defecto hay uno seleccionado
+		variables.precio = precioBase + precioRodillos;
+	};
+	
+	$(document).ready(function(){
+		$(".numRodillos").click(function(){
+			if($(this) != rodilloSeleccionado){
+				rodilloSeleccionado.removeClass("btn-info");
+				rodilloSeleccionado.addClass("btn-default");
+				
+				rodilloSeleccionado = $(this);
+				
+				rodilloSeleccionado.removeClass("btn-default");
+				rodilloSeleccionado.addClass("btn-info");
+				
+				variables.precio = parseInt(precioBase) + (parseInt(precioRodillos) * parseInt($(this).val()));
+			}
+		});
+		
+		
+		$("#opcionSi").click(function(){
+			$("#opcionSi").attr("src", "imagenes/checkBoxLleno.png");
+			$("#opcionNo").attr("src", "imagenes/checkBoxVacio.png");
+			if(!abrillantador){
+				variables.precio = variables.precio + precioAbrillantador;
+				abrillantador = true;
+			}
+		});
+		
+		$("#opcionNo").click(function(){
+			$("#opcionSi").attr("src", "imagenes/checkBoxVacio.png");
+			$("#opcionNo").attr("src", "imagenes/checkBoxLleno.png");
+			if(abrillantador){
+				variables.precio = variables.precio - precioAbrillantador;
+				abrillantador = false;
+			}
+		});		
+	});
+</script>

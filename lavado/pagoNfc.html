@@ -1,0 +1,65 @@
+<div id="menuNFC" style="display: none">
+    <div class="col-xs-12 ajustable" data-altura="10" style="z-index:2;position:fixed; padding: 0px">
+        <div class=" ajustAlt col-xs-11" data-altura="100" style=" padding: 0px" >
+            <div class="ajustAlt ajustTexto col-xs-6 nfc" style="background-color:#ff9900" data-altura="100" data-altoTexto="90" data-anchoTexto="100">PASAR DISPOSITIVO NFC</div>
+            <div class="ajustAlt col-xs-offset-1 col-xs-3"  data-altura="100" >
+                <input class="ajustMargen fondos" data-margen="10" type="checkbox" checked="checked" name="fondos" value="fondosSuficientes">
+                <label class="ajustMargen" data-margen="10" for="fondos">Hay saldo suficiente en el dispositivo</label>
+            </div>
+        </div>
+        <div class="desplegable col-xs-1 cerrarMenu ajustAlt" data-altura="100">
+            <img class="botonDesplegable col-xs-1  ajustAlt" data-altura="100" src="imagenes/menuCerrar.png"/>
+        </div>
+    </div>
+</div>
+<!-- Body -->
+<div class="col-xs-offset-1 col-xs-10 ajustAlt ajustMargen ajustTexto" data-altura="80" data-margen="10" data-anchoTexto="100" data-altoTexto="100">
+	PASE SU DISPOSITIVO POR EL LECTOR NFC
+</div>
+<script>
+	atras = "tipoPago.html";
+	menu = "menuNFC";
+	
+	ejecutar = function(){
+		$("#atras").show();
+		$("#siguiente").hide();
+		$("#abrirmenu").show();
+	};
+	
+	logicaMenu = function(){
+        $(".nfc").click(function(){
+            if($("#menu").find(".fondos").prop("checked")==true){
+				$("#contenido").load("finOperacion.html", function(){ 
+                    prepararTexto();
+					ajustarTodo();
+					ejecutar();
+					remove("menu");
+				});
+			}else{
+				var t = {
+					lineas : 4,
+					texto :[
+						{contenido: ""},
+						{contenido: "No dispone de fondos suficientes,"},
+						{contenido: "no se puede realizar la operacion"},
+						{contenido: ""}
+					]
+				};
+				var b = {
+					texto: "Aceptar",
+					estilo :{backgroundColor: "red", color:"white"}
+				};
+				popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'red'}}, b);
+			}
+		});
+	};
+	
+	$("#atras").click(function(){
+		$("#contenido").load("tipoPago.html", function(){ 
+            prepararTexto();
+			ajustarTodo();
+			ejecutar();
+			remove("menu");
+		});
+	});
+</script>

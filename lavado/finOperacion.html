@@ -1,0 +1,25 @@
+<div class="col-xs-offset-1 col-xs-10 ajustAlt ajustTexto" data-altura="50" data-altoTexto="80" data-anchoTexto="100" style="text-align: center">
+	ESPERE A QUE TERMINE EL LAVADO EN EL PUNTO DE ESPERA<br/><br/>GRACIAS POR UTILIZAR NUESTROS SERVICIOS
+</div>
+<div class="col-xs-offset-4 col-xs-4 ajustAlt" data-altura="30" style="border: 0px solid black">
+	<img id="volverAlInicio" src="imagenes/botonVolverInicio.png" style="border: 1px solid black"></img>
+</div>
+<script>
+	atras = "tipoPago.html";
+	
+	ejecutar = function(){
+		$("#atras").hide();
+		$("#siguiente").hide();
+		$("#abrirmenu").hide();
+	};
+	
+	$(document).ready(function(){
+		$("#volverAlInicio").click(function(){
+			$("#contenido").load("index.html", function(){ 
+                prepararTexto();
+				ajustarTodo();
+                ejecutar();
+            });
+		});
+	});
+</script>
