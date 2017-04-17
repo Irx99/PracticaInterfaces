@@ -1,0 +1,67 @@
+<div class="col-xs-12 ajustAlt" data-altura="100">
+	<div class="col-xs-4 ajustAlt ajustMargen" data-altura="90" data-margen="5">
+		<button id="lavadoInterior" class="btn-block" style="height: 100%">
+			<div class="col-xs-offset-1 col-xs-10 ajustAlt seguirTexto" data-altura="25" data-modelo="textoModelo" style="border: 0px solid black">
+				LAVADO INTERIOR
+			</div>
+			<div class="col-xs-12 ajustAlt ajustMargen" data-altura="70" data-margen="10">
+				<img src="imagenes/lavadoInterior.png" style="max-width: 100%"></img>
+			</div>
+		</button>
+	</div>
+	<div class="col-xs-4 ajustAlt ajustMargen" data-altura="90" data-margen="5">
+		<button id="lavadoExterior" class="btn-block" style="height: 100%">
+			<div class="col-xs-offset-1 col-xs-10 ajustAlt seguirTexto" data-altura="25" data-modelo="textoModelo" style="border: 0px solid black">
+				LAVADO EXTERIOR
+			</div>
+			<div class="col-xs-12 ajustAlt ajustMargen" data-altura="70" data-margen="10">
+				<img src="imagenes/lavadoExterior.png" style="max-width: 100%"></img>
+			</div>
+		</button>
+	</div>
+	<div class="col-xs-4 ajustAlt ajustMargen" data-altura="90" data-margen="5">
+		<button id="lavadoAmbos" class="btn-block" style="height: 100%">
+			<div id="textoModelo" class="col-xs-offset-1 col-xs-10 ajustAlt ajustTexto" data-altura="25" data-anchoTexto="100" data-altoTexto="100" style="border: 0px solid black">
+				LAVADO INTERIOR Y EXTERIOR
+			</div>
+			<div class="col-xs-12 ajustAlt ajustMargen" data-altura="70" data-margen="10">
+				<img src="imagenes/lavadoAmbos.png"></img>
+			</div>
+		</button>
+	</div>
+</div>
+<script>
+	var atras = "index.html";
+	var siguiente = "index.html";
+	
+	ejecutar = function(){
+		$("#atras").hide();
+		$("#siguiente").hide();
+	};
+	
+	$(document).ready(function(){
+		$("#lavadoInterior").click(function(){
+			$("#contenido").load("tipoPago.html", function(){ 
+				prepararTexto();
+				ajustarTodo();
+				ejecutar();
+			});
+		});
+		$("#lavadoExterior").click(function(){
+			$("#contenido").load("lavadoExterior.html", function(){ 
+				prepararTexto();
+				ajustarTodo();
+				ejecutar();
+			});
+		});
+		$("#lavadoAmbos").click(function(){
+			$("#contenido").load("lavadoExterior.html", function(){ 
+				prepararTexto();
+				ajustarTodo();
+				ejecutar();
+			});
+		});
+	});
+	
+	
+</script>

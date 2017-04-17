@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Echar gasolina</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../bootstrap/js/jquery-3.2.0.min.js"></script>
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            #comenzar{
+                background: -webkit-radial-gradient(rgba(75,175,75,1),rgba(75,175,75,0.5)); /* For Safari 5.1 to 6.0 */
+                background: -o-radial-gradient(rgba(75,175,75,1),rgba(75,175,75,0.5)); /* For Opera 11.6 to 12.0 */
+                background: -moz-radial-gradient(rgba(75,175,75,1),rgba(75,175,75,0.5)); /* For Fx 3.6 to 15 */
+                background: radial-gradient(rgba(75,175,75,1),rgba(75,175,75,0.5)); /* Standard syntax (must be last) */
+            }
+            #usuario{
+                background-color: rgba(0,0,0,1);
+                padding: 0px;
+                color: white;
+            }
+			.textoPreparado{
+				display: inline-block;
+				white-space: nowrap;
+				border: 0px solid blue;
+				line-height: 100%;
+			}
+			body{
+				padding: 0px !important;
+			}
+			div{
+				margin: 0px;
+				padding: 0px;
+			}
+			.btn-block{
+				padding: 10% 0;
+				max-width: 100%;
+				max-height: 100%
+			}
+			img{
+				max-width: 100%;
+				max-height: 100%;
+				min-width: 100%;
+				min-height: 100%;
+			}
+        </style>
+        <script src="../bootstrap/js/bootstrap.js"></script>
+        <script>
+            //DESPUES DE CADA FUNCIÓN RESETEAR EL INICIO <--- SI FALLA PUEDE SER POR ESTO
+            var volver; var espera = true;
+            var letraEspera = true;
+            var atras = "index.html";
+            var siguiente = "index.html";
+            var variables = new Object();
+            var ejecutar = function(){};
+            var fPopUp = function(){};
+            $(document).ready(function(){
+                var intervalo = setInterval(cambiarLetraEspera, 500);
+                $("#contenido").load("seleccionarLavado.html", function(){ 
+                    prepararTexto();
+					ajustarTodo();
+                    ejecutar();
+                });
+
+                $("#comenzar").click(function (){
+                    $("#comenzar").fadeOut(10);
+                    inicioTimeOut();
+
+                });
+                $("#siguiente").click(function(){
+                    $("#contenido").load(siguiente, function(){ 
+                        prepararTexto();
+						ajustarTodo();
+                        ejecutar();
+                    });
+                });
+                $("#atras").click(function(){
+                    $("#contenido").load(atras, function(){ 
+                        prepararTexto();
+						ajustarTodo();
+                        ejecutar();
+                    });
+                });    
+                $("#popUp").click(function(){
+                    var texto = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+                    var t = {
+                        lineas : 5,
+                        texto :[
+                            {contenido: "a"},
+                            {contenido: ""},
+                            {contenido: texto},
+                            {contenido: ""},
+                            {contenido: ""}
+                        ]
+                    }
+                    var b = {
+                        texto: "Aceptar",
+                        redirigir: "cantidad.html",
+                        estilo :{backgroundColor: "blue", color:"white"}
+                    }
+                    popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'red'}}, b);
+                });
+            });
+            $(window).resize(function(){
+                ajustarTodo();                            
+            });
+           
+            function ajustar(elemento){
+                var altura = elemento.attr("data-altura");
+                var maxAlt = $(window).height();
+                altura = maxAlt*altura/100;
+//                console.log(elemento.attr("id")+"\nMax Alt:"+maxAlt+"\nAltura:"+altura+"\n");
+                elemento.height(altura);
+                var margen = elemento.attr("data-margen");
+                if(margen!=null){
+                    margen = maxAlt*margen/100;
+                    elemento.css({
+                        marginTop:margen
+                    });
+                }
+            }
+            function ajustarMargen(elemento){
+                var margen = elemento.attr("data-margen");
+                var maxAlt = elemento.parent().height();
+                var margen = maxAlt*margen/100;
+//                console.log(elemento.html()+"\nMax Alt:"+maxAlt+"\nMargen:"+margen+"\n");
+                elemento.css({
+                    marginTop: margen
+                });
+            }
+            function ajustarAltura(elemento){
+                var altura = elemento.attr("data-altura");
+                var maxAlt = elemento.parent().height();
+                var altura = maxAlt*altura/100;
+//                console.log(elemento.html()+"\nMax Alt:"+maxAlt+"\nAltura:"+altura+"\n");
+                elemento.height(altura);
+            }
+            function actualizarTimeOut(){
+                window.clearTimeout(volver);
+                inicioTimeOut();
+            }
+            
+            function pararTimeout(){
+                window.clearTimeout(volver);
+            }
+            function inicioTimeOut(){
+                volver = setTimeout(inicio, 300000);
+            }
+            function inicio(){
+                window.location.href="index.html";
+            }
+            function cambiarLetraEspera(){
+                if(letraEspera){
+                    $("#letraEspera").css({
+                        color: "grey" 
+                    });
+                    letraEspera = !letraEspera;
+                }else{
+                    $("#letraEspera").css({
+                        color: "white"
+                    });
+                    letraEspera = !letraEspera;
+                }
+            }
+            function ajustarTodo(){
+                $(".ajustable").each(function(){
+                    ajustar($(this));
+                });
+                $("body").find(".ajustAlt").each(function(){
+                    ajustarAltura($(this));
+                });
+                $("body").find(".ajustMargen").each(function(){
+                    ajustarMargen($(this));
+                });
+
+				$("body").find(".textoPreparado").each(function(){
+                    ajustarTexto($(this));
+                });
+				$("body").find(".seguirModelo").each(function(){
+                    seguirTexto($(this));
+                });                
+//                ajustarAltura($("#atras"));
+//                ajustarAltura($("#siguiente"));
+            }
+            function add(html){
+                $("body").append(html);
+            }
+            function remove(id){
+                $("#"+id).remove();
+            }
+			// Ajusta el tamaño del texto en funcion del porcentaje pedido
+            function ajustarTexto(elemento){			
+                var altura = elemento.parent().attr("data-altoTexto");
+                var anchura = elemento.parent().attr("data-anchoTexto");
+                var maxAlt = elemento.parent().height();
+
+                var maxAncho = elemento.parent().width() * (anchura / 100);
+                //alert(elemento.width());
+                var fontSizeEle = elemento.css("font-size").substring(0,elemento.css("font-size").length - 2);
+                var anchoEle = elemento.width();
+
+                var fontAlto = (altura * maxAlt) / 100;
+                var fontAncho = (maxAncho * fontSizeEle) / anchoEle;
+                //console.log(maxAlt+" - "+fontAlto+" - "+fontAncho);
+                //console.log(elemento.html()+" -> "+maxAncho+" * "+fontSizeEle+" / "+anchoEle);
+				
+				
+                if(fontAlto < fontAncho){
+                        elemento.css({fontSize : fontAlto+"px"});
+                }else{
+                        elemento.css({fontSize : fontAncho+"px"});				
+                }	
+				
+				// Centra en vertical
+				var margenElemento = (maxAlt - elemento.height()) / 2;
+				elemento.css({marginTop: margenElemento});
+			
+            }
+            function seguirTexto(elemento){
+                var modelo = elemento.parent().attr("data-modelo");
+                var fSizeModelo = $("body").find("#"+modelo).children().first().css("font-size");
+                elemento.css({fontSize : fSizeModelo});
+				
+				// Centra en vertical
+				var maxAlt = elemento.parent().height();
+				var margenElemento = (maxAlt - elemento.height()) / 2;
+				elemento.css({marginTop: margenElemento});
+            }
+            function prepararTexto(){
+                    $("body").find(".ajustTexto").each(function (){
+                            $(this).html("<span class='textoPreparado'>"+$(this).html()+"</span>");
+                    });
+                    $("body").find(".seguirTexto").each(function (){
+                            $(this).html("<span class='seguirModelo textoPreparado'>"+$(this).html()+"</span>");
+                    });
+            }
+            function popUp(html, fondo, caja, boton){
+                $("body").append("<div id='fondoPopUp' style='position:fixed; z-index: 3' data-altura='100' class='ajustable col-xs-12'></div>");
+                if(fondo!=null){
+                    $("#fondoPopUp").css(fondo);
+                }else{
+                    $("#fondoPopUp").css({
+                       backgroundColor: 'rgba(0,0,0,0.5)' 
+                    });
+                }
+                if(caja!= null){
+                    if(caja.dataMargen == null){
+                        caja.dataMargen = '25';
+                    }
+                    if(caja.dataAltura == null){
+                        caja.dataAltura = '50';
+                    }
+                    if(caja.estilo == null){
+                        caja.estilo ={
+                                backgroundColor : "white"
+                        };
+                    }else{
+                        if(caja.estilo.backgroundColor == null){
+                           caja.estilo.backgroundColor = "white";
+                        }
+                    }
+                    if(caja.texto == null){
+                        caja.texto = {
+                            alto : '100',
+                            ancho : '100'
+                        }
+                    }else{
+                        if(caja.texto.alto == null){
+                            caja.texto.alto = '100';
+                        }
+                        if(caja.texto.ancho == null){
+                            caja.texto.ancho = '100';
+                        }
+                    }
+                }else{
+                    //caja = new Object();
+                    caja = {
+                        dataMargen : '25',
+                        dataAltura : '50',
+                        estilo : {
+                            backgroundColor : "white"
+                        },
+                        texto : {
+                            alto : '100',
+                            ancho : '100'
+                        }
+                    };
+                }
+                $("#fondoPopUp").append("<div id='cajaPopUp' class='ajustAlt ajustMargen col-xs-offset-3 col-xs-6' data-altura='"+caja.dataAltura+"' data-margen='"+caja.dataMargen+"' ></div>");
+                $("#cajaPopUp").css(caja.estilo);
+                $("#cajaPopUp").css({zIndex : '4', padding : '0px'});
+
+                var lineas = html.lineas;
+                if (lineas == null){
+                    lineas = 1;
+                }
+                var  imax = 0;
+                var  longmax = 0;
+                var i = 0;
+                for(i = 0; i<lineas; i++){
+                    var lactu = html.texto[i].contenido.length;
+                    if(lactu > longmax){
+                        imax = i;
+                        longmax = lactu;
+                    }
+                }
+                for(i = 0; i<lineas; i++){
+                    if(i != imax){
+                        $("#cajaPopUp").append("<div id='cajaPopUpTexto"+i+"' class='ajustAlt seguirTexto col-xs-12' data-modelo='cajaPopUpTexto"+imax+"' data-altoTexto='"+caja.texto.alto+"'  data-anchoTexto= '"+caja.texto.ancho+"' data-altura='"+80/lineas+"'></div>");
+                    }else{
+                        $("#cajaPopUp").append("<div id='cajaPopUpTexto"+i+"' class='ajustAlt ajustTexto col-xs-12'  data-altoTexto='"+caja.texto.alto+"'  data-anchoTexto= '"+caja.texto.ancho+"' data-altura='"+80/lineas+"'></div>");
+                    }
+                    $("#cajaPopUpTexto"+i).html(html.texto[i].contenido);
+                   
+                }
+                if(boton != null){
+                    if(boton.texto == null){
+                        boton.texto = "Aceptar";
+                    }
+                    if(boton.estilo == null){
+                        boton.estilo ={backgroundColor: "blue"};
+                    }
+                }else{
+                   boton = {
+                        texto: "Aceptar",
+                        estilo :{backgroundColor: "blue"}
+                   };
+                }
+                $("#cajaPopUp").append("<div id='cajaPopUpBoton' onclick='fPopUp()' class='ajustAlt ajustTexto col-xs-offset-5 col-xs-2' data-altura='15' data-altoTexto='100' data-anchoTexto='100'></div>");
+                $("#cajaPopUpBoton").html(boton.texto);
+                $("#cajaPopUpBoton").css(boton.estilo);
+                if(boton.redirigir != null){
+                    fPopUp = function(){
+                        $("#fondoPopUp").remove();
+                        $("#contenido").load(boton.redirigir, function(){ 
+                            prepararTexto();
+                            ajustarTodo();
+                            ejecutar();
+                        });
+                    };
+                }else{
+                    fPopUp = function(){
+                        $("#fondoPopUp").remove();
+
+                    };
+                }
+                prepararTexto();
+                ajustarTodo();
+            }
+            function quitarPopUp(){
+                $("#fondoPopUp").remove();
+            }
+        </script>
+    </head>
+    <body style="overflow: hidden">
+<!--    <body>-->
+        <div id="comenzar" style=" position:fixed;z-index: 3" data-altura="100" class="ajustable col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center; padding-top: 20%">
+                <h1 id="letraEspera" style="color: white">Pulse para comenzar</h1>
+            </div>
+        </div>
+        <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse">
+            
+        </div>
+
+        <div id="contenido" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="77.5" style="background-color: white; padding: 0px">
+            
+        </div>
+        <div id="b_inferior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="12.5" style="background-color: chartreuse; padding: 0px">
+            <div id="atras" class="ajustAlt col-xs-1" data-altura="100" style="background-color:red">
+                atras
+            </div>
+            <div id="siguiente" class="ajustAlt col-xs-1 col-xs-offset-11" data-altura="100" style="background-color:blue; position:absolute; z-index: 2">
+                siguiente
+            </div>
+        </div>
+<!--        <div id="usuario" style=" position:fixed;z-index: 2" data-altura="100" class="ajustable col-md-12 col-sm-12 col-xs-12">
+            
+        </div>-->
+    </body>
+</html>
