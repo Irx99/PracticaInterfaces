@@ -41,12 +41,12 @@ and open the template in the editor.
 				max-width: 100%;
 				max-height: 100%
 			}
-			img{
+/*			img{
 				max-width: 100%;
 				max-height: 100%;
 				min-width: 100%;
 				min-height: 100%;
-			}
+			}*/
         </style>
         <script src="../bootstrap/js/bootstrap.js"></script>
         <script>
@@ -181,6 +181,7 @@ and open the template in the editor.
                 }
             }
             function ajustarTodo(){
+                
                 $(".ajustable").each(function(){
                     ajustar($(this));
                 });
@@ -196,7 +197,14 @@ and open the template in the editor.
                 });
 				$("body").find(".seguirModelo").each(function(){
                     seguirTexto($(this));
-                });                
+                });  
+
+                $("body").find("img").each(function(){
+                    ajustarImg($(this));
+                });
+                $("#fondoPopUp").find(".textoPreparado").each(function(){
+                    centrarTexto($(this));
+                });
 //                ajustarAltura($("#atras"));
 //                ajustarAltura($("#siguiente"));
             }
@@ -369,6 +377,43 @@ and open the template in the editor.
                 prepararTexto();
                 ajustarTodo();
             }
+            function ajustarImg(elemento){
+                var anchoImg = elemento.attr("data-anchoImg");
+                var altoImg = elemento.attr("data-altoImg");
+                var anchoPadre = elemento.parent().width();
+                var altoPadre = elemento.parent().height();
+                if(anchoImg == null || altoImg == null){
+                    anchoImg = anchoPadre;
+                    altoImg = altoPadre;
+                }
+                    
+                if((100*anchoImg/anchoPadre)<(100*altoImg/altoPadre)){
+                    elemento.height(altoPadre);
+                    elemento.width(anchoImg*altoPadre/altoImg);
+                    var margenalto = 0;
+                    var margenizq= ((anchoPadre - elemento.width())/2);
+         
+                }
+                else{
+                    elemento.height(altoImg*anchoPadre/anchoImg);
+                    elemento.width(anchoPadre);
+                    var margenalto= ((altoPadre - elemento.height())/2);
+                    var margenizq = 0;
+                }
+                elemento.css({
+                    marginTop : margenalto+"px",
+                    marginLeft : margenizq+"px"
+                });
+                
+            }
+            function centrarTexto(elemento){
+                var ancho= elemento.width();
+                var anchoPadre = elemento.parent().width();
+                var margenizq = (anchoPadre-ancho)/2;
+                elemento.css({
+                    marginLeft : margenizq+"px"
+                });
+            }
             function quitarPopUp(){
                 $("#fondoPopUp").remove();
             }
@@ -383,7 +428,7 @@ and open the template in the editor.
         </div>
         <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse; padding:0px">
             <div id="abrirmenu" class="ajustAlt col-xs-1 col-xs-offset-11" data-altura="100" style="position:absolute; z-index: 2">
-                <img class="botonDesplegable col-xs-1  ajustAlt" data-altura="100" src="imagenes/menuAbrir.png"/>
+                <img class="botonDesplegable col-xs-1  ajustAlt" data-anchoImg='200' data-altoImg='200' data-altura="100" src="imagenes/menuAbrir.png"/>
             </div>
         </div>
 
