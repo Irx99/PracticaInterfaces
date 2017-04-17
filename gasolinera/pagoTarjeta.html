@@ -1,0 +1,146 @@
+<div id="menuTarjeta" style="display: none">
+    <div class="col-xs-12 ajustable" data-altura="10" style="z-index:2;position:fixed; padding: 0px">
+        <div class=" ajustAlt col-xs-11" data-altura="100" style=" padding: 0px" >
+            <div class="ajustAlt ajustTexto col-xs-6 tarjeta" style="background-color:#ff9900" data-altura="100" data-altoTexto="90" data-anchoTexto="100">Insertar tarjeta</div>
+            <div class="ajustAlt col-xs-offset-1 col-xs-3"  data-altura="100" >
+                <input class="ajustMargen fondos" data-margen="10" type="checkbox" checked="checked" name="fondos" value="fondosSuficientes">
+                <label class="ajustMargen" data-margen="10" for="fondos">Hay saldo suficiente en la tarjeta</label>
+            </div>
+        </div>
+        <div class="desplegable col-xs-1 cerrarMenu ajustAlt" data-altura="100">
+            <img class="botonDesplegable col-xs-1  ajustAlt" data-altura="100" src="imagenes/menuCerrar.png"/>
+        </div>
+    </div>
+    <div class="col-xs-12 ajustable " data-margen="87.5" data-altura="12.5" style="z-index:2;position:fixed; padding: 0px; background-color: rgba(135,148,169,1)">
+        <div class="pinIncorrecto col-xs-offset-3 col-xs-3 ajustAlt ajustTexto pin" data-altoTexto='90' data-anchoTexto='100' data-altura="100" style="background-color: red; visibility: hidden" >Introducir Pin Incorrecto</div>
+        <div class="pinCorrecto col-xs-3 ajustAlt ajustTexto pin" data-altura="100" data-altoTexto='90' data-anchoTexto='100' style="background-color: green; visibility: hidden" >&nbsp;Introducir Pin Correcto&nbsp;</div>
+    </div>
+</div>
+<div id="mensajes" class="ajustTexto ajustAlt ajustMargen col-xs-6 col-xs-offset-3" data-altura="20" data-margen="40" data-altoTexto="100" data-anchoTexto="100" style="text-align: center">
+    INSERTE LA TARJETA
+</div>
+<script>
+	atras = "tipoPago.html";
+        menu = "menuTarjeta";
+        var intentos = 3;
+        var tarjeta = false;
+	ejecutar = function(){
+		$("#atras").show();
+		$("#siguiente").hide();
+                $("#abrirmenu").show();
+                intentos = 3;
+                
+	};
+	logicaMenu= function(){
+            $(".tarjeta").click(function(){
+                if(tarjeta){
+                    remove("menu");
+                    var t = {
+                        lineas : 3,
+                        texto :[
+                            {contenido: ""},
+                            {contenido: "Operacion cancelada"},
+                            {contenido: ""}
+                        ]
+                    };
+                    var b = {
+                        texto: "Aceptar",
+                        redirigir: "tipoPago.html",
+                        estilo :{backgroundColor: "red", color:"white"}
+                    };
+                    popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'red'}}, b);
+                }else{
+                    $(".tarjeta").html("Retirar Tarjeta");
+                    $("#mensajes").html("INTRODUZCA EL PIN");
+                    tarjeta= true;
+                    $(".pin").css({
+                        visibility : "visible"
+                    });
+                    prepararTexto();
+                    ajustarTodo();
+                }
+            }); 
+            $(".pinIncorrecto").click(function(){
+                if(intentos>0){
+                    var t = {
+                        lineas : 4,
+                        texto :[
+                            {contenido: ""},
+                            {contenido: "Pin incorrecto"},
+                            {contenido: "Quedan "+intentos+ " intentos"},
+                            {contenido: ""}
+                        ]
+                    };
+                    var b = {
+                        texto: "Aceptar",
+                        estilo :{backgroundColor: "red", color:"white"}
+                    };
+                    popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'red'}}, b);
+                    intentos--;
+                }else{
+                     var t = {
+                        lineas : 5,
+                        texto :[
+                            {contenido: ""},
+                            {contenido: "Pin incorrecto"},
+                            {contenido: "Ya no quedan intentos"},
+                            {contenido: "Se ha cancelado la operacion"},
+                            {contenido: ""}
+                        ]
+                    };
+                    var b = {
+                        texto: "Aceptar",
+                        redirigir: "tipoPago.html",
+                        estilo :{backgroundColor: "red", color:"white"}
+                    };
+                    popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'red'}}, b);
+                    remove("menu");
+                }
+            });
+            $(".pinCorrecto").click(function(){
+                if($("#menu").find(".fondos").prop("checked")==true){
+                    var t = {
+                        lineas : 5,
+                        texto :[
+                            {contenido: ""},
+                            {contenido: "Operacion realizada con exito"},
+                            {contenido: ""},
+                            {contenido: "Recoja su tarjeta"},
+                            {contenido: ""}
+                        ]
+                    };
+                    var b = {
+                        texto: "Aceptar",
+                        redirigir: "animacionGasolina.html",
+                        estilo :{backgroundColor: "green", color:"white"}
+                    };
+                    popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'green'}}, b);
+                    remove("menu");
+                }else{
+                    var t = {
+                        lineas : 5,
+                        texto :[
+                            {contenido: ""},
+                            {contenido: "No hay fondos en la tarjeta y"},
+                            {contenido: "no se puede realizar la operacion"},
+                            {contenido: "Recoja su tarjeta"},
+                            {contenido: ""}
+                        ]
+                    };
+                    var b = {
+                        texto: "Aceptar",
+                        redirigir: "tipoPago.html",
+                        estilo :{backgroundColor: "red", color:"white"}
+                    };
+                    popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'red'}}, b);
+                    remove("menu");
+                }
+            });
+         
+        };
+        $(document).ready(function(){
+            $("#atras").click(function(){
+
+            });
+        });
+</script>
