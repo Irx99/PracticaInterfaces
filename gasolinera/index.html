@@ -55,14 +55,16 @@ and open the template in the editor.
             var letraEspera = true;
             var atras = "index.html";
             var siguiente = "index.html";
+            var menu = "none";
             var variables = new Object();
             var ejecutar = function(){};
             var fPopUp = function(){};
+            var logicaMenu = function(){};
             $(document).ready(function(){
                 var intervalo = setInterval(cambiarLetraEspera, 500);
                 $("#contenido").load("manguera.html", function(){ 
                     prepararTexto();
-					ajustarTodo();
+                    ajustarTodo();
                     ejecutar();
                 });
 
@@ -85,25 +87,37 @@ and open the template in the editor.
                         ejecutar();
                     });
                 });    
-                $("#popUp").click(function(){
-                    var texto = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-                    var t = {
-                        lineas : 5,
-                        texto :[
-                            {contenido: "a"},
-                            {contenido: ""},
-                            {contenido: texto},
-                            {contenido: ""},
-                            {contenido: ""}
-                        ]
-                    }
-                    var b = {
-                        texto: "Aceptar",
-                        redirigir: "cantidad.html",
-                        estilo :{backgroundColor: "blue", color:"white"}
-                    }
-                    popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'red'}}, b);
+//                $("#popUp").click(function(){
+//                    var texto = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+//                    var t = {
+//                        lineas : 5,
+//                        texto :[
+//                            {contenido: "a"},
+//                            {contenido: ""},
+//                            {contenido: texto},
+//                            {contenido: ""},
+//                            {contenido: ""}
+//                        ]
+//                    };
+//                    var b = {
+//                        texto: "Aceptar",
+//                        redirigir: "cantidad.html",
+//                        estilo :{backgroundColor: "blue", color:"white"}
+//                    };
+//                    popUp(t, {backgroundColor: 'rgba(0,0,0,0.5)'}, {estilo:{color:'red'}}, b);
+//                });
+                $("#abrirmenu").click(function(){
+                    add("<span id='menu' >"+$("body").find("#"+menu).html()+"</span>");
+                    ajustarTodo();
+                    $(".cerrarMenu").click(function(){
+                        remove("menu");
+                    });
+                    $("#menu").ready(logicaMenu());
                 });
+                $("body").click(function(){
+                    actualizarTimeOut();
+                });
+
             });
             $(window).resize(function(){
                 ajustarTodo();                            
@@ -148,7 +162,7 @@ and open the template in the editor.
                 window.clearTimeout(volver);
             }
             function inicioTimeOut(){
-                volver = setTimeout(inicio, 300000);
+                volver = setTimeout(inicio, 60000);
             }
             function inicio(){
                 window.location.href="index.html";
@@ -232,10 +246,14 @@ and open the template in the editor.
             }
             function prepararTexto(){
                     $("body").find(".ajustTexto").each(function (){
+                        if( $(this).find(".textoPreparado").length == 0){
                             $(this).html("<span class='textoPreparado'>"+$(this).html()+"</span>");
+                        }
                     });
                     $("body").find(".seguirTexto").each(function (){
+                        if( $(this).find(".seguirModelo").length == 0){
                             $(this).html("<span class='seguirModelo textoPreparado'>"+$(this).html()+"</span>");
+                        }
                     });
             }
             function popUp(html, fondo, caja, boton){
@@ -363,8 +381,10 @@ and open the template in the editor.
                 <h1 id="letraEspera" style="color: white">Pulse para comenzar</h1>
             </div>
         </div>
-        <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse">
-            
+        <div id="b_superior" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="10" style="background-color: chartreuse; padding:0px">
+            <div id="abrirmenu" class="ajustAlt col-xs-1 col-xs-offset-11" data-altura="100" style="position:absolute; z-index: 2">
+                <img class="botonDesplegable col-xs-1  ajustAlt" data-altura="100" src="imagenes/menuAbrir.png"/>
+            </div>
         </div>
 
         <div id="contenido" class="ajustable col-md-12 col-sm-12 col-xs-12" data-altura="77.5" style="background-color: white; padding: 0px">
@@ -374,9 +394,9 @@ and open the template in the editor.
             <div id="atras" class="ajustAlt col-xs-1" data-altura="100" style="background-color:red">
                 atras
             </div>
-            <div id="popUp" class="ajustAlt col-xs-1 col-xs-offset-5" data-altura="100" style="background-color:yellow; position:absolute; z-index: 2">
+<!--            <div id="popUp" class="ajustAlt col-xs-1 col-xs-offset-5" data-altura="100" style="background-color:yellow; position:absolute; z-index: 2">
                 popUp
-            </div>
+            </div>-->
             <div id="siguiente" class="ajustAlt col-xs-1 col-xs-offset-11" data-altura="100" style="background-color:blue; position:absolute; z-index: 2">
                 siguiente
             </div>

@@ -32,8 +32,9 @@ atras = "cantidad.html";
 siguiente = "tipoPago.html";
 ejecutar = function(){
 	$("#atras").show();
-    $("#siguiente").show();
-	
+        $("#siguiente").show();
+        $("#abrirmenu").hide();
+                        
 	$("#gasolina").children().first().html(variables.gasolina);
 	$("#dinero").children().first().html((variables.dinero/100.0).toFixed(2)+" €");
 	
